@@ -1,0 +1,138 @@
+{
+    "menus": [
+        {
+            "id": 0,
+            "name": "Figuras geométricas",
+            "image": "https://i.pinimg.com/originals/09/12/de/0912deca8a83f4bfcfd4dda9a9396dd4.jpg",
+            "stage": [
+                {
+                    "id": 0,
+                    "type": "Quadrado",
+                    "alternative": [
+                        "Quadrado",
+                        "Triangulo",
+                        "Retangulo"
+                    ],
+                    "answerCorrect": "Quadrado"
+                },
+                {
+                    "id": 1,
+                    "type": "Circulo",
+                    "alternative": [
+                        "Quadrado",
+                        "Triangulo",
+                        "Círculo"
+                    ],
+                    "answerCorrect": "Círculo"
+                },
+                {
+                    "id": 2,
+                    "type": "Retangulo",
+                    "alternative": [
+                        "Quadrado",
+                        "Retângulo",
+                        "Octógono"
+                    ],
+                    "answerCorrect": "Retângulo"
+                },
+                {
+                    "id": 3,
+                    "type": "Triangulo",
+                    "alternative": [
+                        "Quadrado",
+                        "Retângulo",
+                        "Triângulo"
+                    ],
+                    "answerCorrect": "Triângulo"
+                },
+                {
+                    "id": 4,
+                    "type": "Trapezio",
+                    "alternative": [
+                        "Trapézio",
+                        "Retângulo",
+                        "Octógono"
+                    ],
+                    "answerCorrect": "Trapézio"
+                },
+                {
+                    "id": 5,
+                    "type": "Hexagono",
+                    "alternative": [
+                        "Quadrado",
+                        "Retângulo",
+                        "Hexágono"
+                    ],
+                    "answerCorrect": "Hexágono"
+                },
+                {
+                    "id": 6,
+                    "type": "Pentagono",
+                    "alternative": [
+                        "Quadrado",
+                        "Pentágono",
+                        "Retangulo"
+                    ],
+                    "answerCorrect": "Pentágono"
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "name": "Comida",
+            "image": "https://i.pinimg.com/originals/00/af/33/00af3398b0abddafecd30f6dac84cce8.jpg",
+            "stage": [
+                {
+                    "id": 0,
+                    "type": "Chicken",
+                    "alternative": [
+                        "Peixe",
+                        "Macarrão",
+                        "Frango"
+                    ],
+                    "answerCorrect": "Frango"
+                },
+                {
+                    "id": 1,
+                    "type": "Apple",
+                    "alternative": [
+                        "Abacate",
+                        "Maça",
+                        "Laranja"
+                    ],
+                    "answerCorrect": "Maça"
+                },
+                {
+                    "id": 2,
+                    "type": "PorCorn",
+                    "alternative": [
+                        "Bacon",
+                        "Arroz",
+                        "Pipoca"
+                    ],
+                    "answerCorrect": "Pipoca"
+                },
+                {
+                    "id": 3,
+                    "type": "Pizza",
+                    "alternative": [
+                        "Pizza",
+                        "Pastel",
+                        "Coxinha"
+                    ],
+                    "answerCorrect": "Pizza"
+                },
+                {
+                    "id": 4,
+                    "type": "Watermellon",
+                    "alternative": [
+                        "Pera",
+                        "Abacaxi",
+                        "Melancia"
+                    ],
+                    "answerCorrect": "Melancia"
+                }
+            ]
+        }
+    ]
+}

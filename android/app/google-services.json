@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "562929892594",
+    "firebase_url": "https://hey-max.firebaseio.com",
+    "project_id": "hey-max",
+    "storage_bucket": "hey-max.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:562929892594:android:fa5cd1066562b0db7e646b",
+        "android_client_info": {
+          "package_name": "com.heymax"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "562929892594-g38t6jmd23fev49tvp65do6ii0738cbh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.heymax",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "562929892594-0sl2apna4kk7joc8skrkn3cqksb2pk6b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvCosO33pgWf88wJ1dG8nKm6TzhoLPc9I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "562929892594-0sl2apna4kk7joc8skrkn3cqksb2pk6b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image} from 'react-native';
+import {Image} from './styles';
 
 interface IImage {
   type:
@@ -53,10 +53,9 @@ const MaxImage = (props: IImage) => {
         return (
           <Image
             source={require('../../assets/max/Confuso.png')}
-            style={{
-              width: props.width ? props.width : 247,
-              height: props.height ? props.height : 200,
-            }}
+            width={props.width}
+            height={props.height}
+            default247
           />
         );
       }
@@ -64,10 +63,9 @@ const MaxImage = (props: IImage) => {
         return (
           <Image
             source={require('../../assets/max/Feliz.png')}
-            style={{
-              width: props.width ? props.width : 247,
-              height: props.height ? props.height : 200,
-            }}
+            width={props.width}
+            height={props.height}
+            default247
           />
         );
       }
@@ -75,10 +73,9 @@ const MaxImage = (props: IImage) => {
         return (
           <Image
             source={require('../../assets/max/FelizOrelhaBaixoDente.png')}
-            style={{
-              width: props.width ? props.width : 247,
-              height: props.height ? props.height : 200,
-            }}
+            width={props.width}
+            height={props.height}
+            default247
           />
         );
       }
@@ -86,10 +83,9 @@ const MaxImage = (props: IImage) => {
         return (
           <Image
             source={require('../../assets/max/FelizOrelhaDente.png')}
-            style={{
-              width: props.width ? props.width : 247,
-              height: props.height ? props.height : 200,
-            }}
+            width={props.width}
+            height={props.height}
+            default247
           />
         );
       }
@@ -97,10 +93,9 @@ const MaxImage = (props: IImage) => {
         return (
           <Image
             source={require('../../assets/max/Inteiro.png')}
-            style={{
-              width: props.width ? props.width : 247,
-              height: props.height ? props.height : 200,
-            }}
+            width={props.width}
+            height={props.height}
+            default247
           />
         );
       }
@@ -108,10 +103,9 @@ const MaxImage = (props: IImage) => {
         return (
           <Image
             source={require('../../assets/max/TristeChoro.png')}
-            style={{
-              width: props.width ? props.width : 247,
-              height: props.height ? props.height : 200,
-            }}
+            width={props.width}
+            height={props.height}
+            default247
           />
         );
       }
@@ -120,55 +114,50 @@ const MaxImage = (props: IImage) => {
       case 'Adolescente': {
         return (
           <Image
-            source={require('../../assets/avatar/adolescente.png')}
-            style={{
-              width: props.width ? props.width : 247,
-              height: props.height ? props.height : 200,
-            }}
+            source={require('../../assets/avatar/Adolescente.png')}
+            width={props.width}
+            height={props.height}
+            default247
           />
         );
       }
       case 'Adulto': {
         return (
           <Image
-            source={require('../../assets/avatar/adulto.png')}
-            style={{
-              width: props.width ? props.width : 247,
-              height: props.height ? props.height : 200,
-            }}
+            source={require('../../assets/avatar/Adulto.png')}
+            width={props.width}
+            height={props.height}
+            default247
           />
         );
       }
       case 'Bebe': {
         return (
           <Image
-            source={require('../../assets/avatar/bebe.png')}
-            style={{
-              width: props.width ? props.width : 247,
-              height: props.height ? props.height : 200,
-            }}
+            source={require('../../assets/avatar/Bebe.png')}
+            width={props.width}
+            height={props.height}
+            default247
           />
         );
       }
       case 'Criança': {
         return (
           <Image
-            source={require('../../assets/avatar/crianca.png')}
-            style={{
-              width: props.width ? props.width : 247,
-              height: props.height ? props.height : 200,
-            }}
+            source={require('../../assets/avatar/Crianca.png')}
+            width={props.width}
+            height={props.height}
+            default247
           />
         );
       }
       case 'Velho': {
         return (
           <Image
-            source={require('../../assets/avatar/velho.png')}
-            style={{
-              width: props.width ? props.width : 247,
-              height: props.height ? props.height : 200,
-            }}
+            source={require('../../assets/avatar/Velho.png')}
+            width={props.width}
+            height={props.height}
+            default247
           />
         );
       }
@@ -179,77 +168,78 @@ const MaxImage = (props: IImage) => {
       case 'ArrowRight': {
         return (
           <Image
-            source={require('../../assets/icons/arrowRight.png')}
-            style={{
-              width: props.width ? props.width : 247,
-              height: props.height ? props.height : 200,
-            }}
+            source={require('../../assets/icons/ArrowRight.png')}
+            width={props.width}
+            height={props.height}
+            default247
           />
         );
       }
       case 'Question': {
         return (
           <Image
-            source={require('../../assets/icons/question.png')}
-            style={{
-              width: props.width ? props.width : 247,
-              height: props.height ? props.height : 200,
-            }}
+            source={require('../../assets/icons/Question.png')}
+            width={props.width}
+            height={props.height}
+            default247
           />
         );
       }
       case 'Checkbox': {
         return (
           <Image
-            source={require('../../assets/icons/checkbox.png')}
-            style={{
-              width: props.width ? props.width : 247,
-              height: props.height ? props.height : 200,
-            }}
+            source={require('../../assets/icons/Checkbox.png')}
+            width={props.width}
+            height={props.height}
+            default247
           />
         );
       }
       case 'CheckboxConfirmed': {
         return (
           <Image
-            source={require('../../assets/icons/checkbox-confirmed.png')}
-            style={{
-              width: props.width ? props.width : 247,
-              height: props.height ? props.height : 200,
-            }}
+            source={require('../../assets/icons/CheckboxConfirmed.png')}
+            width={props.width}
+            height={props.height}
+            default247
           />
         );
       }
       case 'Exit': {
         return (
           <Image
-            source={require('../../assets/icons/exit.png')}
-            style={{
-              width: props.width ? props.width : 247,
-              height: props.height ? props.height : 200,
-            }}
+            source={require('../../assets/icons/Exit.png')}
+            width={props.width}
+            height={props.height}
+            default247
           />
         );
       }
       case 'Close': {
         return (
           <Image
-            source={require('../../assets/icons/close.png')}
-            style={{
-              width: props.width ? props.width : 147,
-              height: props.height ? props.height : 100,
-            }}
+            source={require('../../assets/icons/Close.png')}
+            width={props.width}
+            height={props.height}
           />
         );
       }
       case 'Menu': {
         return (
           <Image
-            source={require('../../assets/icons/menu.png')}
-            style={{
-              width: props.width ? props.width : 147,
-              height: props.height ? props.height : 100,
-            }}
+            source={require('../../assets/icons/Menu.png')}
+            width={props.width}
+            height={props.height}
+          />
+        );
+      }
+
+      case 'Gmail': {
+        return (
+          <Image
+            source={require('../../assets/icons/Gmail.png')}
+            width={props.width}
+            height={props.height}
           />
         );
       }
@@ -260,99 +250,72 @@ const MaxImage = (props: IImage) => {
       case 'Quadrado': {
         return (
           <Image
-            source={require('../../assets/pictures/geometricFigures/quadrado.png')}
-            style={{
-              width: props.width ? props.width : 147,
-              height: props.height ? props.height : 100,
-            }}
+            source={require('../../assets/pictures/geometricFigures/Quadrado.png')}
+            width={props.width}
+            height={props.height}
           />
         );
       }
       case 'Circulo': {
         return (
           <Image
-            source={require('../../assets/pictures/geometricFigures/circulo.png')}
-            style={{
-              width: props.width ? props.width : 147,
-              height: props.height ? props.height : 100,
-            }}
+            source={require('../../assets/pictures/geometricFigures/Circulo.png')}
+            width={props.width}
+            height={props.height}
           />
         );
       }
       case 'Retangulo': {
         return (
           <Image
-            source={require('../../assets/pictures/geometricFigures/retangulo.png')}
-            style={{
-              width: props.width ? props.width : 147,
-              height: props.height ? props.height : 100,
-            }}
+            source={require('../../assets/pictures/geometricFigures/Retangulo.png')}
+            width={props.width}
+            height={props.height}
           />
         );
       }
       case 'Triangulo': {
         return (
           <Image
-            source={require('../../assets/pictures/geometricFigures/triangulo.png')}
-            style={{
-              width: props.width ? props.width : 147,
-              height: props.height ? props.height : 100,
-            }}
-          />
-        );
-      }
-      case 'FundoRetangulo': {
-        return (
-          <Image
-            source={require('../../assets/pictures/geometricFigures/retangulo.png')}
-            style={{
-              width: props.width ? props.width : 147,
-              height: props.height ? props.height : 100,
-            }}
+            source={require('../../assets/pictures/geometricFigures/Triangulo.png')}
+            width={props.width}
+            height={props.height}
           />
         );
       }
       case 'Pentagono': {
         return (
           <Image
-            source={require('../../assets/pictures/geometricFigures/pentagono.png')}
-            style={{
-              width: props.width ? props.width : 147,
-              height: props.height ? props.height : 100,
-            }}
+            source={require('../../assets/pictures/geometricFigures/Pentagono.png')}
+            width={props.width}
+            height={props.height}
           />
         );
       }
       case 'Hexagono': {
         return (
           <Image
-            source={require('../../assets/pictures/geometricFigures/hexagono.png')}
-            style={{
-              width: props.width ? props.width : 147,
-              height: props.height ? props.height : 100,
-            }}
+            source={require('../../assets/pictures/geometricFigures/Hexagono.png')}
+            width={props.width}
+            height={props.height}
           />
         );
       }
       case 'Trapezio': {
         return (
           <Image
-            source={require('../../assets/pictures/geometricFigures/trapezio.png')}
-            style={{
-              width: props.width ? props.width : 147,
-              height: props.height ? props.height : 100,
-            }}
+            source={require('../../assets/pictures/geometricFigures/Trapezio.png')}
+            width={props.width}
+            height={props.height}
           />
         );
       }
       case 'Elipse': {
         return (
           <Image
-            source={require('../../assets/pictures/geometricFigures/elipse.png')}
-            style={{
-              width: props.width ? props.width : 147,
-              height: props.height ? props.height : 100,
-            }}
+            source={require('../../assets/pictures/geometricFigures/Elipse.png')}
+            width={props.width}
+            height={props.height}
           />
         );
       }
@@ -363,100 +326,72 @@ const MaxImage = (props: IImage) => {
       case 'Apple': {
         return (
           <Image
-            source={require('../../assets/pictures/food/apple.png')}
-            style={{
-              width: props.width ? props.width : 147,
-              height: props.height ? props.height : 100,
-            }}
+            source={require('../../assets/pictures/food/Apple.png')}
+            width={props.width}
+            height={props.height}
           />
         );
       }
       case 'Chicken': {
         return (
           <Image
-            source={require('../../assets/pictures/food/chicken.png')}
-            style={{
-              width: props.width ? props.width : 147,
-              height: props.height ? props.height : 100,
-            }}
+            source={require('../../assets/pictures/food/Chicken.png')}
+            width={props.width}
+            height={props.height}
           />
         );
       }
       case 'FrenchFries': {
         return (
           <Image
-            source={require('../../assets/pictures/food/frenchFries.png')}
-            style={{
-              width: props.width ? props.width : 147,
-              height: props.height ? props.height : 100,
-            }}
+            source={require('../../assets/pictures/food/FrenchFries.png')}
+            width={props.width}
+            height={props.height}
           />
         );
       }
       case 'Macarrao': {
         return (
           <Image
-            source={require('../../assets/pictures/food/macarrao.png')}
-            style={{
-              width: props.width ? props.width : 147,
-              height: props.height ? props.height : 100,
-            }}
+            source={require('../../assets/pictures/food/Macarrao.png')}
+            width={props.width}
+            height={props.height}
           />
         );
       }
       case 'Pineapple': {
         return (
           <Image
-            source={require('../../assets/pictures/food/pineapple.png')}
-            style={{
-              width: props.width ? props.width : 147,
-              height: props.height ? props.height : 100,
-            }}
+            source={require('../../assets/pictures/food/Pineapple.png')}
+            width={props.width}
+            height={props.height}
           />
         );
       }
       case 'Pizza': {
         return (
           <Image
-            source={require('../../assets/pictures/food/pizza.png')}
-            style={{
-              width: props.width ? props.width : 147,
-              height: props.height ? props.height : 100,
-            }}
+            source={require('../../assets/pictures/food/Pizza.png')}
+            width={props.width}
+            height={props.height}
           />
         );
       }
       case 'PorCorn': {
         return (
           <Image
-            source={require('../../assets/pictures/food/popCorn.png')}
-            style={{
-              width: props.width ? props.width : 147,
-              height: props.height ? props.height : 100,
-            }}
+            source={require('../../assets/pictures/food/PopCorn.png')}
+            width={props.width}
+            height={props.height}
           />
         );
       }
       case 'Watermellon': {
         return (
           <Image
-            source={require('../../assets/pictures/food/watermellon.png')}
-            style={{
-              width: props.width ? props.width : 147,
-              height: props.height ? props.height : 100,
-            }}
-          />
-        );
-      }
-
-      case 'Gmail': {
-        return (
-          <Image
-            source={require('../../assets/icons/gmail.png')}
-            style={{
-              width: props.width ? props.width : 147,
-              height: props.height ? props.height : 100,
-            }}
+            source={require('../../assets/pictures/food/Watermellon.png')}
+            width={props.width}
+            height={props.height}
           />
         );
       }

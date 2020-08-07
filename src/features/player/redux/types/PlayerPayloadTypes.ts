@@ -1,6 +1,6 @@
-interface IStages {
+export interface IStages {
   id: number;
-  type: string;
+  picture: string;
   alternative: string[];
   answerCorrect: string;
 }

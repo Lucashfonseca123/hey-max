@@ -7,7 +7,7 @@
             "stage": [
                 {
                     "id": 0,
-                    "type": "Quadrado",
+                    "picture": "Quadrado",
                     "alternative": [
                         "Quadrado",
                         "Triangulo",
@@ -17,7 +17,7 @@
                 },
                 {
                     "id": 1,
-                    "type": "Circulo",
+                    "picture": "Circulo",
                     "alternative": [
                         "Quadrado",
                         "Triangulo",
@@ -27,7 +27,7 @@
                 },
                 {
                     "id": 2,
-                    "type": "Retangulo",
+                    "picture": "Retangulo",
                     "alternative": [
                         "Quadrado",
                         "Retângulo",
@@ -37,7 +37,7 @@
                 },
                 {
                     "id": 3,
-                    "type": "Triangulo",
+                    "picture": "Triangulo",
                     "alternative": [
                         "Quadrado",
                         "Retângulo",
@@ -47,7 +47,7 @@
                 },
                 {
                     "id": 4,
-                    "type": "Trapezio",
+                    "picture": "Trapezio",
                     "alternative": [
                         "Trapézio",
                         "Retângulo",
@@ -57,7 +57,7 @@
                 },
                 {
                     "id": 5,
-                    "type": "Hexagono",
+                    "picture": "Hexagono",
                     "alternative": [
                         "Quadrado",
                         "Retângulo",
@@ -67,7 +67,7 @@
                 },
                 {
                     "id": 6,
-                    "type": "Pentagono",
+                    "picture": "Pentagono",
                     "alternative": [
                         "Quadrado",
                         "Pentágono",
@@ -84,7 +84,7 @@
             "stage": [
                 {
                     "id": 0,
-                    "type": "Chicken",
+                    "picture": "Chicken",
                     "alternative": [
                         "Peixe",
                         "Macarrão",
@@ -94,7 +94,7 @@
                 },
                 {
                     "id": 1,
-                    "type": "Apple",
+                    "picture": "Apple",
                     "alternative": [
                         "Abacate",
                         "Maça",
@@ -104,7 +104,7 @@
                 },
                 {
                     "id": 2,
-                    "type": "PorCorn",
+                    "picture": "PorCorn",
                     "alternative": [
                         "Bacon",
                         "Arroz",
@@ -114,7 +114,7 @@
                 },
                 {
                     "id": 3,
-                    "type": "Pizza",
+                    "picture": "Pizza",
                     "alternative": [
                         "Pizza",
                         "Pastel",
@@ -124,7 +124,7 @@
                 },
                 {
                     "id": 4,
-                    "type": "Watermellon",
+                    "picture": "Watermellon",
                     "alternative": [
                         "Pera",
                         "Abacaxi",

@@ -52,7 +52,7 @@ const WelcomeScreen = () => {
       <ContainerEmail>
         <Markdown title="Faça seu login pelo e-mail" fontSize={16} />
         <TouchableOpacity style={{marginTop: 16}} onPress={() => {}}>
-          <Image type="Gmail" height={40} width={60} />
+          {/* <Image type="Gmail" height={40} width={60} /> */}
         </TouchableOpacity>
       </ContainerEmail>
       <ContainerMiddle>

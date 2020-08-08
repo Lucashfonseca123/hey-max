@@ -4,7 +4,7 @@ import menuReducer from 'features/player/redux/reducer';
 
 const rootReducer = combineReducers({
   AccreditFeature: accreditReducer,
-  MenuFeature: menuReducer,
+  PlayerFeature: menuReducer,
 });
 
 export type AppState = ReturnType<typeof rootReducer>;

@@ -15,3 +15,11 @@ export interface IMenu {
   image: string;
   stage: IStages[];
 }
+
+export interface IPlayerState {
+  idMenu: number;
+  idStage: number;
+  picture: string;
+  alternative: string[];
+  answerCorrect: string;
+}

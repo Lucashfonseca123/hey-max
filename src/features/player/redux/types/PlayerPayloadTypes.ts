@@ -11,3 +11,8 @@ export interface IMenuStages {
   image: string;
   stage: IStages[];
 }
+
+export interface IGetStage {
+  idMenu: number;
+  stage: IStages;
+}

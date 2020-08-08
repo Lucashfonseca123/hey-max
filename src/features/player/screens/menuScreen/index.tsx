@@ -16,7 +16,7 @@ interface IPagination {
 }
 
 interface IListItem {
-  item: {name: string; object?: object; image?: string};
+  item: {id: number; name: string; object?: object; image?: string};
   index: number;
 }
 
@@ -24,31 +24,29 @@ const MenuScreen = () => {
   const [onSnapItem, setOnSnapItem] = useState<IPagination>({activeSlide: 0});
   const [stage, setStage] = useState([{}]);
   const carouselRef = useRef(null);
-  const navigation = useNavigation();
+  const {navigate, setOptions} = useNavigation();
 
   const stages = useSelector(
-    (appState: AppState) => appState.MenuFeature.state.menus,
+    (appState: AppState) => appState.PlayerFeature.menu.menus,
   );
 
   useEffect(() => {
     BackHandler.addEventListener('hardwareBackPress', () => {
-      navigation.navigate('WelcomeScreen');
+      navigate('WelcomeScreen');
       return true;
     });
-  }, [navigation]);
+  }, [navigate]);
 
   useEffect(() => {
     setStage(stages);
   }, [stages]);
 
-  navigation.setOptions(
+  setOptions(
     headerComposer({
-      leftComponent: Header.BackButton(() =>
-        navigation.navigate('WelcomeScreen'),
-      ),
+      leftComponent: Header.BackButton(() => navigate('WelcomeScreen')),
       backgroundColor: '#FFEF60',
       rightComponent: Header.ConfigButton(() =>
-        navigation.navigate('ConfigurationScreen'),
+        navigate('ConfigurationScreen'),
       ),
     }),
   );
@@ -56,15 +54,14 @@ const MenuScreen = () => {
   const renderItem = useCallback(
     ({item, index}: IListItem) => {
       const {activeSlide} = onSnapItem;
-
       return (
         <Item>
           <Card
             source={item.image}
             image={true}
             onPress={() =>
-              navigation.navigate('PlayerScreen', {
-                params: item,
+              navigate('PlayerScreen', {
+                id: item.id,
               })
             }>
             <Markdown
@@ -85,7 +82,7 @@ const MenuScreen = () => {
         </Item>
       );
     },
-    [navigation, onSnapItem, stage.length],
+    [navigate, onSnapItem, stage.length],
   );
 
   return (

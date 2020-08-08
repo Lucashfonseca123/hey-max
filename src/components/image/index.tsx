@@ -40,7 +40,8 @@ interface IImage {
     | 'Pizza'
     | 'PorCorn'
     | 'Watermellon'
-    | 'Gmail';
+    | 'Gmail'
+    | string;
   width?: number;
   height?: number;
 }

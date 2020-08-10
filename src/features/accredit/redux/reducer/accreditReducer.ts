@@ -17,6 +17,12 @@ const initialState: ISetUserState = {
     },
   ],
   campaign: 0,
+  status: {
+    status1: false,
+    status2: false,
+    status3: false,
+    status4: false,
+  },
 };
 
 const accreditReducerSlice = createSlice({
@@ -49,6 +55,25 @@ const accreditReducerSlice = createSlice({
       const {
         payload: {totalSizeStages, totalSizeStagesFinished},
       } = action;
+
+      if (
+        totalSizeStagesFinished >= totalSizeStages * 0.25 &&
+        totalSizeStagesFinished < totalSizeStages * 0.5
+      ) {
+        state.status.status1 = true;
+      } else if (
+        totalSizeStagesFinished >= totalSizeStages * 0.5 &&
+        totalSizeStagesFinished < totalSizeStages * 0.75
+      ) {
+        state.status.status2 = true;
+      } else if (
+        totalSizeStagesFinished >= totalSizeStages * 0.75 &&
+        totalSizeStagesFinished < totalSizeStages * 1
+      ) {
+        state.status.status3 = true;
+      } else if (totalSizeStagesFinished === totalSizeStages * 1) {
+        state.status.status4 = true;
+      }
 
       state.campaign = totalSizeStagesFinished / totalSizeStages;
     },

@@ -82,6 +82,10 @@ const PlayerScreen = () => {
     (appState: AppState) => appState.PlayerFeature.player.finished,
   );
 
+  const statusAccredit = useSelector(
+    (appState: AppState) => appState.AccreditFeature.state.status,
+  );
+
   const totalSizeStagesFinished = useSelector((appState: AppState) =>
     appState.AccreditFeature.state.progress.reduce((total, stagesAccredit) => {
       if (!stagesAccredit.finished) {
@@ -157,6 +161,14 @@ const PlayerScreen = () => {
       dispatch(resetResponse());
     }
   }, [statusAnswered, dispatch, currentStage.idStage, id]);
+
+  const getNextLevelModal = useCallback(() => {
+    if (statusAccredit.status1) {
+    } else if (statusAccredit.status2) {
+    } else if (statusAccredit.status3) {
+    } else if (statusAccredit.status4) {
+    }
+  }, [statusAccredit]);
 
   const sendResponse = useCallback(
     (option: string) => {

@@ -17,12 +17,8 @@ const initialState: ISetUserState = {
     },
   ],
   campaign: 0,
-  status: {
-    status1: false,
-    status2: false,
-    status3: false,
-    status4: false,
-  },
+  status: 1,
+  fullGame: false,
 };
 
 const accreditReducerSlice = createSlice({
@@ -56,29 +52,35 @@ const accreditReducerSlice = createSlice({
         payload: {totalSizeStages, totalSizeStagesFinished},
       } = action;
 
-      if (
-        totalSizeStagesFinished >= totalSizeStages * 0.25 &&
-        totalSizeStagesFinished < totalSizeStages * 0.5
-      ) {
-        state.status.status1 = true;
-      } else if (
-        totalSizeStagesFinished >= totalSizeStages * 0.5 &&
-        totalSizeStagesFinished < totalSizeStages * 0.75
-      ) {
-        state.status.status2 = true;
-      } else if (
-        totalSizeStagesFinished >= totalSizeStages * 0.75 &&
-        totalSizeStagesFinished < totalSizeStages * 1
-      ) {
-        state.status.status3 = true;
-      } else if (totalSizeStagesFinished === totalSizeStages * 1) {
-        state.status.status4 = true;
+      if (!state.fullGame) {
+        if (
+          totalSizeStagesFinished >= totalSizeStages * 0.25 &&
+          totalSizeStagesFinished < totalSizeStages * 0.5
+        ) {
+          state.status = 2;
+        } else if (
+          totalSizeStagesFinished >= totalSizeStages * 0.5 &&
+          totalSizeStagesFinished < totalSizeStages * 0.75
+        ) {
+          state.status = 3;
+        } else if (
+          totalSizeStagesFinished >= totalSizeStages * 0.75 &&
+          totalSizeStagesFinished < totalSizeStages * 1
+        ) {
+          state.status = 4;
+        } else if (totalSizeStagesFinished === totalSizeStages * 1) {
+          state.status = 5;
+          state.fullGame = true;
+        }
       }
 
       state.campaign = totalSizeStagesFinished / totalSizeStages;
     },
     resetLoading(state) {
       state.loading = false;
+    },
+    resetStatus(state) {
+      state.status = 0;
     },
     setStateToInitial: () => initialState,
   },
@@ -90,5 +92,6 @@ export const {
   setProgress,
   setStateToInitial,
   setCampaign,
+  resetStatus,
 } = accreditReducerSlice.actions;
 export default accreditReducerSlice.reducer;

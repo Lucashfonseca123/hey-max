@@ -10,6 +10,7 @@ interface IResultAnswered {
   type: 'success' | 'errored' | 'nextLevel' | 'finishLevel' | 'endGame';
   isVisible: boolean;
   closeModal: Function;
+  typeProgress?: 'baby' | 'child' | 'teenager' | 'young' | 'adult' | 'old';
 }
 
 const ResultAnswered = (props: IResultAnswered) => {
@@ -88,13 +89,57 @@ const ResultAnswered = (props: IResultAnswered) => {
           </Modal>
         );
       case 'nextLevel':
-        return (
-          <Modal isVisible={props.isVisible} closeModal={props.closeModal}>
-            <Container>
-              <Markdown title="This is nextLevel modal" />
-            </Container>
-          </Modal>
-        );
+        switch (props.typeProgress) {
+          case 'baby':
+            return (
+              <Modal isVisible={props.isVisible} closeModal={props.closeModal}>
+                <Container>
+                  <Markdown title="This is baby modal" />
+                </Container>
+              </Modal>
+            );
+          case 'child':
+            return (
+              <Modal isVisible={props.isVisible} closeModal={props.closeModal}>
+                <Container>
+                  <Markdown title="This is child modal" />
+                </Container>
+              </Modal>
+            );
+          case 'teenager':
+            return (
+              <Modal isVisible={props.isVisible} closeModal={props.closeModal}>
+                <Container>
+                  <Markdown title="This is teenager modal" />
+                </Container>
+              </Modal>
+            );
+          case 'young':
+            return (
+              <Modal isVisible={props.isVisible} closeModal={props.closeModal}>
+                <Container>
+                  <Markdown title="This is young modal" />
+                </Container>
+              </Modal>
+            );
+          case 'adult':
+            return (
+              <Modal isVisible={props.isVisible} closeModal={props.closeModal}>
+                <Container>
+                  <Markdown title="This is adult modal" />
+                </Container>
+              </Modal>
+            );
+          case 'old':
+            return (
+              <Modal isVisible={props.isVisible} closeModal={props.closeModal}>
+                <Container>
+                  <Markdown title="This is old modal" />
+                </Container>
+              </Modal>
+            );
+        }
+
       case 'finishLevel':
         return (
           <Modal

@@ -4,6 +4,7 @@ import {useNavigation, useRoute} from '@react-navigation/native';
 import {
   setProgress,
   setCampaign,
+  resetStatus,
 } from 'features/accredit/redux/reducer/accreditReducer';
 import {
   getStage,
@@ -31,6 +32,7 @@ const PlayerScreen = () => {
   const [typeModal, setTypeModal] = useState(
     'success' || 'errored' || 'nextLevel' || 'finishLevel' || 'endGame',
   );
+  const [typeModalProgress, setTypeModalProgress] = useState('');
   const {
     params: {id},
   } = useRoute();
@@ -162,11 +164,40 @@ const PlayerScreen = () => {
     }
   }, [statusAnswered, dispatch, currentStage.idStage, id]);
 
-  const getNextLevelModal = useCallback(() => {
-    if (statusAccredit.status1) {
-    } else if (statusAccredit.status2) {
-    } else if (statusAccredit.status3) {
-    } else if (statusAccredit.status4) {
+  useEffect(() => {
+    switch (statusAccredit) {
+      case 1:
+        setVisibleModal(true);
+        setTypeModal('nextLevel');
+        setTypeModalProgress('child');
+        dispatch(resetStatus());
+        break;
+      case 2:
+        setVisibleModal(true);
+        setTypeModal('nextLevel');
+        setTypeModalProgress('teenager');
+        dispatch(resetStatus());
+        break;
+      case 3:
+        setVisibleModal(true);
+        setTypeModal('nextLevel');
+        setTypeModalProgress('young');
+        dispatch(resetStatus());
+        break;
+      case 4:
+        setVisibleModal(true);
+        setTypeModal('nextLevel');
+        setTypeModalProgress('adult');
+        dispatch(resetStatus());
+        break;
+      case 5:
+        setVisibleModal(true);
+        setTypeModal('nextLevel');
+        setTypeModalProgress('old');
+        dispatch(resetStatus());
+        break;
+      default:
+        return;
     }
   }, [statusAccredit]);
 
@@ -215,6 +246,7 @@ const PlayerScreen = () => {
         type={typeModal}
         isVisible={visibleModal}
         closeModal={closeModal}
+        typeProgress={typeModalProgress}
       />
     </>
   );

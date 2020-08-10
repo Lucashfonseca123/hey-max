@@ -22,4 +22,6 @@ export interface IPlayerState {
   picture: string;
   alternative: string[];
   answerCorrect: string;
+  answered?: boolean;
+  finished: boolean;
 }

@@ -3,6 +3,7 @@ import {TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {GoogleSignin} from '@react-native-community/google-signin';
 import {getStages} from 'features/player/redux/reducer/menuReducer';
+import {setStateToInitial} from 'features/accredit/redux/reducer/accreditReducer';
 
 import {Markdown, Button, Image} from '../../../../components';
 import {
@@ -42,6 +43,7 @@ const WelcomeScreen = () => {
 
   useEffect(() => {
     dispatch(getStages());
+    dispatch(setStateToInitial());
   }, [dispatch]);
 
   return (
@@ -59,7 +61,7 @@ const WelcomeScreen = () => {
         <Button
           text="INICIAR"
           onPress={() => {
-            navigation.navigate('MenuScreen');
+            navigation.navigate('RegisterScreen');
           }}
           backgroundColor="white"
           fontSize={36}

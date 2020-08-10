@@ -3,6 +3,7 @@ export interface IStages {
   picture: string;
   alternative: string[];
   answerCorrect: string;
+  finished: boolean;
 }
 
 export interface IMenuStages {
@@ -15,4 +16,19 @@ export interface IMenuStages {
 export interface IGetStage {
   idMenu: number;
   stage: IStages;
+}
+
+export interface ISendAnswer {
+  idMenu: number;
+  stageId: number;
+  response: string;
+}
+
+export interface INextStage {
+  idMenu: number;
+  idStage: number;
+}
+
+export interface IResetStage {
+  idMenu: number;
 }

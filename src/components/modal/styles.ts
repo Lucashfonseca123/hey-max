@@ -13,7 +13,7 @@ export const Container = styled.View`
         padding-left: 16px;
         padding-top: 24px;
         padding-bottom: 16px;
-        background-color: #F9F9F9;
+        background-color: #F2F2F2;
         justify-content: center;
         align-items: center;
         border-radius: 20px;

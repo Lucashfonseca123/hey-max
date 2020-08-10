@@ -4,8 +4,10 @@ export interface ISetUser {
 export interface ISetProgress {
   menuId: number;
   stageId: number;
+  finished: boolean;
 }
 
-export interface ISetCampaing {
-  campaign?: number;
+export interface ISetCampaign {
+  totalSizeStages: number;
+  totalSizeStagesFinished: number;
 }

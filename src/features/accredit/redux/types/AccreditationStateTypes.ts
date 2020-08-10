@@ -1,11 +1,12 @@
 interface IProgress {
   menuId: number;
   stageId: number;
-  campaign?: number;
+  finished?: boolean;
 }
 
 export interface ISetUserState {
   name: string;
   loading?: boolean;
   progress: IProgress[];
+  campaign: number;
 }

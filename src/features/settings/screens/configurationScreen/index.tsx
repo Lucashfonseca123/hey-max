@@ -57,6 +57,10 @@ const ConfigurationScreen = () => {
   //     }
   //   };
 
+  const campaign = useSelector(
+    (appState: AppState) => appState.AccreditFeature.state.campaign,
+  );
+
   return (
     <Container>
       <Image type="Inteiro" width={110} height={480} />
@@ -68,19 +72,19 @@ const ConfigurationScreen = () => {
           borderColor="white">
           <Markdown title="Progresso" fontSize={18} />
           <PaddingBar />
-          {/* <Markdown
-            title={parseFloat((status * 100).toFixed(2)) + '%'}
+          <Markdown
+            title={parseFloat((campaign * 100).toFixed(2)) + '%'}
             fontSize={18}
-          /> */}
+          />
           <PaddingBar />
-          {/* <Progress.Bar
-            progress={status}
+          <Progress.Bar
+            progress={campaign}
             width={100}
             height={20}
-            color="#5ee045"
+            color="#00F006"
             borderColor="black"
             borderWidth={1}
-          /> */}
+          />
 
           <Padding />
           <Markdown title="Status" fontSize={18} />

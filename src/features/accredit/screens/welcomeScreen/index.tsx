@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {TouchableOpacity} from 'react-native';
+import {TouchableOpacity, BackHandler} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {GoogleSignin} from '@react-native-community/google-signin';
 import {getStages} from 'features/player/redux/reducer/menuReducer';
@@ -31,6 +31,16 @@ interface IUser {
 const WelcomeScreen = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (navigation.canGoBack()) {
+      BackHandler.exitApp();
+    }
+    BackHandler.addEventListener('hardwareBackPress', () => {
+      BackHandler.exitApp();
+      return true;
+    });
+  }, [navigation, BackHandler.addEventListener('hardwareBackPress')]);
 
   // useEffect(() => {
   //   GoogleSignin.configure({

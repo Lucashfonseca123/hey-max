@@ -1,6 +1,7 @@
-import React, {memo, useCallback} from 'react';
-import {Container, DivButtonModal} from './styles';
-import {Modal, Markdown, Button} from 'components';
+import React, {memo, useCallback, useEffect, useRef} from 'react';
+import {Animated} from 'react-native';
+import {Container, DivButtonModal, DivImageModal} from './styles';
+import {Modal, Markdown, Button, Image} from 'components';
 import {useNavigation} from '@react-navigation/native';
 import {useDispatch, useSelector} from 'react-redux';
 import {resetStage} from 'features/player/redux/reducer/playerReducer';
@@ -20,6 +21,25 @@ const ResultAnswered = (props: IResultAnswered) => {
   const idMenu = useSelector(
     (appState: AppState) => appState.PlayerFeature.player.idMenu,
   );
+
+  const fadeAnim = useRef(new Animated.Value(0)).current;
+  const fadeGoodLuck = useRef(new Animated.Value(0)).current;
+
+  console.log(fadeAnim);
+
+  useEffect(() => {
+    Animated.timing(fadeAnim, {
+      toValue: 1,
+      duration: 2000,
+      useNativeDriver: true,
+    }).start();
+    Animated.timing(fadeGoodLuck, {
+      toValue: 1,
+      duration: 2000,
+      useNativeDriver: true,
+      delay: 2500,
+    }).start();
+  }, [fadeAnim, fadeGoodLuck]);
 
   const getModal = useCallback(() => {
     switch (props.type) {
@@ -102,7 +122,46 @@ const ResultAnswered = (props: IResultAnswered) => {
             return (
               <Modal isVisible={props.isVisible} closeModal={props.closeModal}>
                 <Container>
-                  <Markdown title="This is child modal" />
+                  <Animated.View
+                    style={[
+                      {
+                        opacity: fadeAnim,
+                      },
+                    ]}>
+                    <Markdown
+                      textAlign="center"
+                      title="Olá, vamos começar nossa jornada!"
+                      fontColor="#FFEF60"
+                      fontSize={22}
+                    />
+                  </Animated.View>
+                  <Animated.View style={[{opacity: fadeGoodLuck}]}>
+                    <Markdown
+                      textAlign="center"
+                      title="Boa sorte!"
+                      fontColor="#FAE519"
+                      fontSize={32}
+                    />
+                  </Animated.View>
+                  <Animated.View
+                    style={[
+                      {
+                        opacity: fadeAnim,
+                      },
+                    ]}>
+                    <DivImageModal>
+                      <Image type="FelizOrelhaDente" width={120} height={150} />
+                    </DivImageModal>
+                  </Animated.View>
+                  <Animated.View style={[{opacity: fadeGoodLuck}]}>
+                    <Button
+                      text="Vamos!"
+                      onPress={() => props.closeModal()}
+                      widthSize={160}
+                      heightSize={10}
+                      fontSize={16}
+                    />
+                  </Animated.View>
                 </Container>
               </Modal>
             );
@@ -110,7 +169,28 @@ const ResultAnswered = (props: IResultAnswered) => {
             return (
               <Modal isVisible={props.isVisible} closeModal={props.closeModal}>
                 <Container>
-                  <Markdown title="This is teenager modal" />
+                  <Markdown
+                    textAlign="center"
+                    title="Parabéns, você evoluiu!"
+                    fontColor="#FFEF60"
+                    fontSize={22}
+                  />
+                  <Markdown
+                    title="Novo status:"
+                    fontColor="#FFFFFF"
+                    fontSize={22}
+                  />
+                  <Markdown title="Criança" fontColor="#FFEF60" fontSize={22} />
+                  <DivImageModal>
+                    <Image type="Criança" width={70} height={150} />
+                  </DivImageModal>
+                  <Button
+                    text="Continuar"
+                    onPress={() => props.closeModal()}
+                    widthSize={160}
+                    heightSize={10}
+                    fontSize={16}
+                  />
                 </Container>
               </Modal>
             );
@@ -118,7 +198,32 @@ const ResultAnswered = (props: IResultAnswered) => {
             return (
               <Modal isVisible={props.isVisible} closeModal={props.closeModal}>
                 <Container>
-                  <Markdown title="This is young modal" />
+                  <Markdown
+                    textAlign="center"
+                    title="Parabéns, você evoluiu!"
+                    fontColor="#FFEF60"
+                    fontSize={22}
+                  />
+                  <Markdown
+                    title="Novo status:"
+                    fontColor="#FFFFFF"
+                    fontSize={22}
+                  />
+                  <Markdown
+                    title="Adolescente"
+                    fontColor="#FFEF60"
+                    fontSize={22}
+                  />
+                  <DivImageModal>
+                    <Image type="Adolescente" width={70} height={150} />
+                  </DivImageModal>
+                  <Button
+                    text="Continuar"
+                    onPress={() => props.closeModal()}
+                    widthSize={160}
+                    heightSize={10}
+                    fontSize={16}
+                  />
                 </Container>
               </Modal>
             );
@@ -126,7 +231,28 @@ const ResultAnswered = (props: IResultAnswered) => {
             return (
               <Modal isVisible={props.isVisible} closeModal={props.closeModal}>
                 <Container>
-                  <Markdown title="This is adult modal" />
+                  <Markdown
+                    textAlign="center"
+                    title="Parabéns, você evoluiu!"
+                    fontColor="#FFEF60"
+                    fontSize={22}
+                  />
+                  <Markdown
+                    title="Novo status:"
+                    fontColor="#FFFFFF"
+                    fontSize={22}
+                  />
+                  <Markdown title="Adulto" fontColor="#FFEF60" fontSize={22} />
+                  <DivImageModal>
+                    <Image type="Adulto" width={70} height={150} />
+                  </DivImageModal>
+                  <Button
+                    text="Continuar"
+                    onPress={() => props.closeModal()}
+                    widthSize={160}
+                    heightSize={10}
+                    fontSize={16}
+                  />
                 </Container>
               </Modal>
             );
@@ -134,7 +260,28 @@ const ResultAnswered = (props: IResultAnswered) => {
             return (
               <Modal isVisible={props.isVisible} closeModal={props.closeModal}>
                 <Container>
-                  <Markdown title="This is old modal" />
+                  <Markdown
+                    textAlign="center"
+                    title="Parabéns, você finalizou o jogo!"
+                    fontColor="#FFEF60"
+                    fontSize={22}
+                  />
+                  <Markdown
+                    title="Novo status:"
+                    fontColor="#FFFFFF"
+                    fontSize={22}
+                  />
+                  <Markdown title="Idoso" fontColor="#FFEF60" fontSize={22} />
+                  <DivImageModal>
+                    <Image type="Velho" width={70} height={150} />
+                  </DivImageModal>
+                  <Button
+                    text="Continuar"
+                    onPress={() => props.closeModal()}
+                    widthSize={160}
+                    heightSize={10}
+                    fontSize={16}
+                  />
                 </Container>
               </Modal>
             );

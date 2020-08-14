@@ -1,7 +1,12 @@
 import React from 'react';
-import {TouchableOpacity, ActivityIndicator} from 'react-native';
+import {ActivityIndicator} from 'react-native';
 import {Markdown, Image} from '../';
-import {Container, PaddingButton, ContainerLoading} from './styles';
+import {
+  Container,
+  PaddingButton,
+  ContainerLoading,
+  ButtonInside,
+} from './styles';
 
 interface IButton {
   text: string;
@@ -21,21 +26,17 @@ const Button = (props: IButton) => {
   return (
     <Container color={props.color} widthSize={props.widthSize}>
       {props.loading ? (
-        <ContainerLoading>
+        <ContainerLoading
+          widthSize={props.widthSize}
+          heightSize={props.heightSize}>
           <ActivityIndicator size="small" color="#FFFF" />
         </ContainerLoading>
       ) : (
-        <TouchableOpacity
+        <ButtonInside
           disabled={props.disabled}
-          onPress={props.onPress ? props.onPress : null}
-          style={{
-            alignItems: 'center',
-            justifyContent: 'center',
-            width: props.widthSize,
-            paddingTop: props.heightSize,
-            paddingBottom: props.heightSize,
-            flexDirection: 'row',
-          }}>
+          widthSize={props.widthSize}
+          heightSize={props.heightSize}
+          onPress={props.onPress ? props.onPress : null}>
           {props.text === 'Menu' ? (
             <>
               <PaddingButton>
@@ -44,7 +45,7 @@ const Button = (props: IButton) => {
             </>
           ) : null}
           <Markdown title={props.text} fontSize={props.fontSize} />
-        </TouchableOpacity>
+        </ButtonInside>
       )}
     </Container>
   );

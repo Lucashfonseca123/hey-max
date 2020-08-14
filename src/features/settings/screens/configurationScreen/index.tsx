@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useCallback} from 'react';
 import {Markdown, Image, Card, Modal, Button} from '../../../../components';
 import {useNavigation} from '@react-navigation/native';
 import {headerComposer, Header} from 'navigation/NavigationMixins';
@@ -27,6 +27,10 @@ const ConfigurationScreen = () => {
     }),
   );
 
+  const campaign = useSelector(
+    (appState: AppState) => appState.AccreditFeature.state.campaign,
+  );
+
   const showModal = () => {
     setVisibleModal(!visibleModal);
   };
@@ -39,27 +43,23 @@ const ConfigurationScreen = () => {
     BackHandler.exitApp();
   };
 
-  //   const getImage = () => {
-  //     if (missingStage < 3) {
-  //       return 'Bebe';
-  //     }
-  //     if (missingStage < 6) {
-  //       return 'Criança';
-  //     }
-  //     if (missingStage < 9) {
-  //       return 'Adolescente';
-  //     }
-  //     if (missingStage < 12) {
-  //       return 'Adulto';
-  //     }
-  //     if (missingStage === 12) {
-  //       return 'Velho';
-  //     }
-  //   };
-
-  const campaign = useSelector(
-    (appState: AppState) => appState.AccreditFeature.state.campaign,
-  );
+  const getImage = useCallback(() => {
+    if (campaign < 0.2) {
+      return 'Bebe';
+    }
+    if (campaign >= 0.2 && campaign < 0.4) {
+      return 'Criança';
+    }
+    if (campaign >= 0.4 && campaign < 0.6) {
+      return 'Adolescente';
+    }
+    if (campaign >= 0.6 && campaign < 0.8) {
+      return 'Adulto';
+    }
+    if (campaign === 1) {
+      return 'Velho';
+    }
+  }, [campaign]);
 
   return (
     <Container>
@@ -88,14 +88,14 @@ const ConfigurationScreen = () => {
 
           <Padding />
           <Markdown title="Status" fontSize={18} />
-          {/* <Markdown
+          <Markdown
             title={getImage() === 'Velho' ? 'Idoso' : getImage()}
             fontSize={20}
             fontColor="#FFEF60"
-          /> */}
+          />
 
           <Padding />
-          {/* <Image type={getImage()} width={95} height={120} /> */}
+          <Image type={getImage()} width={95} height={120} />
           <Padding />
 
           <Markdown title="Som" fontSize={18} />

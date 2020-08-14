@@ -20,12 +20,27 @@ const Container = styled(RectButton)`
   overflow: hidden;
 `;
 
+const ButtonInside = styled.TouchableOpacity`
+  ${(props: IButton) => css`
+    width: ${props.widthSize}px;
+    padding-top: ${props.heightSize}px;
+    padding-bottom: ${props.heightSize}px;
+  `}
+
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+`;
+
 const ContainerLoading = styled.View`
-  padding: 8px;
+  ${(props: IButton) => css`
+    width: ${props.widthSize}px;
+    padding: ${props.heightSize + 3}px;
+  `}
 `;
 
 const PaddingButton = styled.View`
   padding-right: 8px;
 `;
 
-export {Container, PaddingButton, ContainerLoading};
+export {Container, PaddingButton, ContainerLoading, ButtonInside};

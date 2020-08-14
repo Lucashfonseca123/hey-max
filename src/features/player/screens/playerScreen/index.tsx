@@ -88,6 +88,10 @@ const PlayerScreen = () => {
     (appState: AppState) => appState.AccreditFeature.state.status,
   );
 
+  const statusAccreditFinished = useSelector(
+    (appState: AppState) => appState.AccreditFeature.state.statusFinished,
+  );
+
   const totalSizeStagesFinished = useSelector((appState: AppState) =>
     appState.AccreditFeature.state.progress.reduce((total, stagesAccredit) => {
       if (!stagesAccredit.finished) {
@@ -167,39 +171,49 @@ const PlayerScreen = () => {
   useEffect(() => {
     switch (statusAccredit) {
       case 1:
-        setVisibleModal(true);
-        setTypeModal('nextLevel');
-        setTypeModalProgress('child');
-        dispatch(resetStatus());
+        if (!statusAccreditFinished.status1) {
+          setVisibleModal(true);
+          setTypeModal('nextLevel');
+          setTypeModalProgress('child');
+          dispatch(resetStatus({statusFinished: 'status1'}));
+        }
         break;
       case 2:
-        setVisibleModal(true);
-        setTypeModal('nextLevel');
-        setTypeModalProgress('teenager');
-        dispatch(resetStatus());
+        if (!statusAccreditFinished.status2) {
+          setVisibleModal(true);
+          setTypeModal('nextLevel');
+          setTypeModalProgress('teenager');
+          dispatch(resetStatus({statusFinished: 'status2'}));
+        }
         break;
       case 3:
-        setVisibleModal(true);
-        setTypeModal('nextLevel');
-        setTypeModalProgress('young');
-        dispatch(resetStatus());
+        if (!statusAccreditFinished.status3) {
+          setVisibleModal(true);
+          setTypeModal('nextLevel');
+          setTypeModalProgress('young');
+          dispatch(resetStatus({statusFinished: 'status3'}));
+        }
         break;
       case 4:
-        setVisibleModal(true);
-        setTypeModal('nextLevel');
-        setTypeModalProgress('adult');
-        dispatch(resetStatus());
+        if (!statusAccreditFinished.status4) {
+          setVisibleModal(true);
+          setTypeModal('nextLevel');
+          setTypeModalProgress('adult');
+          dispatch(resetStatus({statusFinished: 'status4'}));
+        }
         break;
       case 5:
-        setVisibleModal(true);
-        setTypeModal('nextLevel');
-        setTypeModalProgress('old');
-        dispatch(resetStatus());
+        if (!statusAccreditFinished.status5) {
+          setVisibleModal(true);
+          setTypeModal('nextLevel');
+          setTypeModalProgress('old');
+          dispatch(resetStatus({statusFinished: 'status5'}));
+        }
         break;
       default:
         return;
     }
-  }, [statusAccredit]);
+  }, [statusAccredit, statusAccreditFinished]);
 
   const sendResponse = useCallback(
     (option: string) => {

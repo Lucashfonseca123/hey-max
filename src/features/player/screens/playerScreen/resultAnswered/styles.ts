@@ -4,7 +4,10 @@ interface IPlayerScreenProps {
   noPadding?: boolean;
 }
 
-export const Container = styled.View``;
+export const Container = styled.View`
+  padding-top: 16px;
+  align-items: center;
+`;
 
 export const DivButtonModal = styled.View`
   width: 100%;
@@ -18,4 +21,9 @@ export const DivButtonModal = styled.View`
       : css`
           margin-top: 32px;
         `}
+`;
+
+export const DivImageModal = styled.View`
+  margin-top: 16px;
+  margin-bottom: 16px;
 `;

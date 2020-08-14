@@ -3,6 +3,7 @@ import {
   ISetUser,
   ISetProgress,
   ISetCampaign,
+  IResetStatus,
 } from '../types/AccreditationPayloadTypes';
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
@@ -19,6 +20,12 @@ const initialState: ISetUserState = {
   campaign: 0,
   status: 1,
   fullGame: false,
+  statusFinished: {
+    status1: false,
+    status2: false,
+    status3: false,
+    status4: false,
+  },
 };
 
 const accreditReducerSlice = createSlice({
@@ -79,7 +86,27 @@ const accreditReducerSlice = createSlice({
     resetLoading(state) {
       state.loading = false;
     },
-    resetStatus(state) {
+    resetStatus(state, action: PayloadAction<IResetStatus>) {
+      const {
+        payload: {statusFinished},
+      } = action;
+      switch (statusFinished) {
+        case 'status1':
+          state.statusFinished.status1 = true;
+          break;
+        case 'status2':
+          state.statusFinished.status2 = true;
+          break;
+        case 'status3':
+          state.statusFinished.status3 = true;
+          break;
+        case 'status4':
+          state.statusFinished.status4 = true;
+          break;
+        case 'status5':
+          state.statusFinished.status5 = true;
+          break;
+      }
       state.status = 0;
     },
     setStateToInitial: () => initialState,

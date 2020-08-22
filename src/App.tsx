@@ -6,7 +6,7 @@ import {StatusBar, SafeAreaView, Text} from 'react-native';
 import {Provider} from 'react-redux';
 import {store, persistor} from './store/Store';
 import {PersistGate} from 'redux-persist/integration/react';
-// import SplashScreen from 'react-native-splash-screen';
+import SplashScreen from 'react-native-splash-screen';
 
 import RootNavigator from './navigation/RootNavigator';
 
@@ -14,7 +14,7 @@ const App = () => {
   useEffect(() => {
     Text.defaultProps = Text.defaultProps || {};
     Text.defaultProps.allowFontScaling = false;
-    // SplashScreen.hide();
+    SplashScreen.hide();
   }, []);
 
   return (

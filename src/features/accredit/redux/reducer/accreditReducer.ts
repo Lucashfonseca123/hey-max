@@ -4,6 +4,8 @@ import {
   ISetProgress,
   ISetCampaign,
   IResetStatus,
+  ILoginSuccess,
+  ILoginErrored,
 } from '../types/AccreditationPayloadTypes';
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
@@ -25,6 +27,7 @@ const initialState: ISetUserState = {
     status2: false,
     status3: false,
     status4: false,
+    status5: false,
   },
 };
 
@@ -108,6 +111,14 @@ const accreditReducerSlice = createSlice({
           break;
       }
       state.status = 0;
+    },
+    loginSuccess(state, action: PayloadAction<ILoginSuccess>) {
+      const {payload} = action;
+      state = payload;
+    },
+    loginErrored(state, action: PayloadAction<ILoginErrored>) {
+      const {payload} = action;
+      state = payload;
     },
     setStateToInitial: () => initialState,
   },

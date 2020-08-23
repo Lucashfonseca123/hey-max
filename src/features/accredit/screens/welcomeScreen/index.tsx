@@ -1,11 +1,11 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useCallback} from 'react';
 import {TouchableOpacity, BackHandler} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {GoogleSignin} from '@react-native-community/google-signin';
 import {getStages} from 'features/player/redux/reducer/menuReducer';
 import {setStateToInitial} from 'features/accredit/redux/reducer/accreditReducer';
 
-import {Markdown, Button, Image} from '../../../../components';
+import {Markdown, Button, Image, Sound} from '../../../../components';
 import {
   Container,
   ContainerTop,
@@ -31,6 +31,15 @@ interface IUser {
 const WelcomeScreen = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
+
+  const playMusic = useCallback(() => {
+    Sound({
+      song: 'button.mp3',
+      play: true,
+      volume: 0.6,
+      infinite: true,
+    });
+  }, []);
 
   useEffect(() => {
     if (navigation.canGoBack()) {
@@ -58,6 +67,7 @@ const WelcomeScreen = () => {
 
   return (
     <Container>
+      {playMusic()}
       <ContainerTop>
         <Markdown title="hey max" fontSize={64} />
       </ContainerTop>

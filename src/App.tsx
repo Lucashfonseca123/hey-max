@@ -8,6 +8,7 @@ import {store, persistor} from './store/Store';
 import {PersistGate} from 'redux-persist/integration/react';
 import SplashScreen from 'react-native-splash-screen';
 import * as Sentry from '@sentry/react-native';
+import codePush from 'react-native-code-push';
 
 import RootNavigator from './navigation/RootNavigator';
 
@@ -36,4 +37,6 @@ const App = () => {
   );
 };
 
-export default App;
+export default codePush({
+  checkFrequency: codePush.CheckFrequency.ON_APP_RESUME,
+})(App);

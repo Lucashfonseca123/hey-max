@@ -31,7 +31,7 @@ const Sound = ({song, volume, play, infinite}: ISound) => {
 
   const music = useSelector(
     () =>
-      new SoundRN(song, SoundRN.CACHES, (error) => {
+      new SoundRN(song, SoundRN.MAIN_BUNDLE, (error) => {
         if (error) {
           console.log('failed to load the sound', error);
           return;

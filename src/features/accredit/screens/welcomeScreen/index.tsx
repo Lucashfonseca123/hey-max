@@ -53,7 +53,7 @@ const WelcomeScreen = () => {
 
   useEffect(() => {
     dispatch(getStages());
-    dispatch(setStateToInitial());
+    // dispatch(setStateToInitial());
   }, [dispatch]);
 
   return (

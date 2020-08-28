@@ -8,8 +8,7 @@ import {ISetUserState} from '../types/AccreditationStateTypes';
 const persistConfig = {
   key: 'authentication',
   storage: AsyncStorage,
-  whitelist: [],
-  stateReconciler: autoMergeLevel2,
+  whitelist: ['name'],
 };
 
 export default combineReducers({

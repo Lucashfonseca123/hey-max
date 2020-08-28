@@ -115,7 +115,7 @@ const MaxImage = (props: IImage) => {
       case 'Adolescente': {
         return (
           <Image
-            source={require('../../assets/avatar/Adolescente.png')}
+            source={require('../../assets/avatar/adolescente.png')}
             width={props.width}
             height={props.height}
             default247
@@ -125,7 +125,7 @@ const MaxImage = (props: IImage) => {
       case 'Adulto': {
         return (
           <Image
-            source={require('../../assets/avatar/Adulto.png')}
+            source={require('../../assets/avatar/adulto.png')}
             width={props.width}
             height={props.height}
             default247
@@ -135,7 +135,7 @@ const MaxImage = (props: IImage) => {
       case 'Bebe': {
         return (
           <Image
-            source={require('../../assets/avatar/Bebe.png')}
+            source={require('../../assets/avatar/bebe.png')}
             width={props.width}
             height={props.height}
             default247
@@ -145,7 +145,7 @@ const MaxImage = (props: IImage) => {
       case 'Criança': {
         return (
           <Image
-            source={require('../../assets/avatar/Crianca.png')}
+            source={require('../../assets/avatar/crianca.png')}
             width={props.width}
             height={props.height}
             default247
@@ -155,7 +155,7 @@ const MaxImage = (props: IImage) => {
       case 'Velho': {
         return (
           <Image
-            source={require('../../assets/avatar/Velho.png')}
+            source={require('../../assets/avatar/velho.png')}
             width={props.width}
             height={props.height}
             default247
@@ -169,7 +169,7 @@ const MaxImage = (props: IImage) => {
       case 'ArrowRight': {
         return (
           <Image
-            source={require('../../assets/icons/ArrowRight.png')}
+            source={require('../../assets/icons/arrowRight.png')}
             width={props.width}
             height={props.height}
             default247
@@ -179,7 +179,7 @@ const MaxImage = (props: IImage) => {
       case 'Question': {
         return (
           <Image
-            source={require('../../assets/icons/Question.png')}
+            source={require('../../assets/icons/question.png')}
             width={props.width}
             height={props.height}
             default247
@@ -189,7 +189,7 @@ const MaxImage = (props: IImage) => {
       case 'Checkbox': {
         return (
           <Image
-            source={require('../../assets/icons/Checkbox.png')}
+            source={require('../../assets/icons/checkbox.png')}
             width={props.width}
             height={props.height}
             default247
@@ -209,7 +209,7 @@ const MaxImage = (props: IImage) => {
       case 'Exit': {
         return (
           <Image
-            source={require('../../assets/icons/Exit.png')}
+            source={require('../../assets/icons/exit.png')}
             width={props.width}
             height={props.height}
             default247
@@ -219,7 +219,7 @@ const MaxImage = (props: IImage) => {
       case 'Close': {
         return (
           <Image
-            source={require('../../assets/icons/Close.png')}
+            source={require('../../assets/icons/close.png')}
             width={props.width}
             height={props.height}
           />
@@ -228,7 +228,7 @@ const MaxImage = (props: IImage) => {
       case 'Menu': {
         return (
           <Image
-            source={require('../../assets/icons/Menu.png')}
+            source={require('../../assets/icons/menu.png')}
             width={props.width}
             height={props.height}
           />
@@ -238,7 +238,7 @@ const MaxImage = (props: IImage) => {
       case 'Gmail': {
         return (
           <Image
-            source={require('../../assets/icons/Gmail.png')}
+            source={require('../../assets/icons/gmail.png')}
             width={props.width}
             height={props.height}
           />
@@ -251,7 +251,7 @@ const MaxImage = (props: IImage) => {
       case 'Quadrado': {
         return (
           <Image
-            source={require('../../assets/pictures/geometricFigures/Quadrado.png')}
+            source={require('../../assets/pictures/geometricFigures/quadrado.png')}
             width={props.width}
             height={props.height}
           />
@@ -260,7 +260,7 @@ const MaxImage = (props: IImage) => {
       case 'Circulo': {
         return (
           <Image
-            source={require('../../assets/pictures/geometricFigures/Circulo.png')}
+            source={require('../../assets/pictures/geometricFigures/circulo.png')}
             width={props.width}
             height={props.height}
           />
@@ -269,7 +269,7 @@ const MaxImage = (props: IImage) => {
       case 'Retangulo': {
         return (
           <Image
-            source={require('../../assets/pictures/geometricFigures/Retangulo.png')}
+            source={require('../../assets/pictures/geometricFigures/retangulo.png')}
             width={props.width}
             height={props.height}
           />
@@ -278,7 +278,7 @@ const MaxImage = (props: IImage) => {
       case 'Triangulo': {
         return (
           <Image
-            source={require('../../assets/pictures/geometricFigures/Triangulo.png')}
+            source={require('../../assets/pictures/geometricFigures/triangulo.png')}
             width={props.width}
             height={props.height}
           />
@@ -287,7 +287,7 @@ const MaxImage = (props: IImage) => {
       case 'Pentagono': {
         return (
           <Image
-            source={require('../../assets/pictures/geometricFigures/Pentagono.png')}
+            source={require('../../assets/pictures/geometricFigures/pentagono.png')}
             width={props.width}
             height={props.height}
           />
@@ -296,7 +296,7 @@ const MaxImage = (props: IImage) => {
       case 'Hexagono': {
         return (
           <Image
-            source={require('../../assets/pictures/geometricFigures/Hexagono.png')}
+            source={require('../../assets/pictures/geometricFigures/hexagono.png')}
             width={props.width}
             height={props.height}
           />
@@ -305,7 +305,7 @@ const MaxImage = (props: IImage) => {
       case 'Trapezio': {
         return (
           <Image
-            source={require('../../assets/pictures/geometricFigures/Trapezio.png')}
+            source={require('../../assets/pictures/geometricFigures/trapezio.png')}
             width={props.width}
             height={props.height}
           />
@@ -314,7 +314,7 @@ const MaxImage = (props: IImage) => {
       case 'Elipse': {
         return (
           <Image
-            source={require('../../assets/pictures/geometricFigures/Elipse.png')}
+            source={require('../../assets/pictures/geometricFigures/elipse.png')}
             width={props.width}
             height={props.height}
           />
@@ -327,7 +327,7 @@ const MaxImage = (props: IImage) => {
       case 'Apple': {
         return (
           <Image
-            source={require('../../assets/pictures/food/Apple.png')}
+            source={require('../../assets/pictures/food/apple.png')}
             width={props.width}
             height={props.height}
           />
@@ -336,7 +336,7 @@ const MaxImage = (props: IImage) => {
       case 'Chicken': {
         return (
           <Image
-            source={require('../../assets/pictures/food/Chicken.png')}
+            source={require('../../assets/pictures/food/chicken.png')}
             width={props.width}
             height={props.height}
           />
@@ -345,7 +345,7 @@ const MaxImage = (props: IImage) => {
       case 'FrenchFries': {
         return (
           <Image
-            source={require('../../assets/pictures/food/FrenchFries.png')}
+            source={require('../../assets/pictures/food/frenchFries.png')}
             width={props.width}
             height={props.height}
           />
@@ -354,7 +354,7 @@ const MaxImage = (props: IImage) => {
       case 'Macarrao': {
         return (
           <Image
-            source={require('../../assets/pictures/food/Macarrao.png')}
+            source={require('../../assets/pictures/food/macarrao.png')}
             width={props.width}
             height={props.height}
           />
@@ -363,7 +363,7 @@ const MaxImage = (props: IImage) => {
       case 'Pineapple': {
         return (
           <Image
-            source={require('../../assets/pictures/food/Pineapple.png')}
+            source={require('../../assets/pictures/food/pineapple.png')}
             width={props.width}
             height={props.height}
           />
@@ -372,7 +372,7 @@ const MaxImage = (props: IImage) => {
       case 'Pizza': {
         return (
           <Image
-            source={require('../../assets/pictures/food/Pizza.png')}
+            source={require('../../assets/pictures/food/pizza.png')}
             width={props.width}
             height={props.height}
           />
@@ -381,7 +381,7 @@ const MaxImage = (props: IImage) => {
       case 'PorCorn': {
         return (
           <Image
-            source={require('../../assets/pictures/food/PopCorn.png')}
+            source={require('../../assets/pictures/food/popCorn.png')}
             width={props.width}
             height={props.height}
           />
@@ -390,7 +390,7 @@ const MaxImage = (props: IImage) => {
       case 'Watermellon': {
         return (
           <Image
-            source={require('../../assets/pictures/food/Watermellon.png')}
+            source={require('../../assets/pictures/food/watermellon.png')}
             width={props.width}
             height={props.height}
           />

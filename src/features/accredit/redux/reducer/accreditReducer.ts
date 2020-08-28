@@ -10,7 +10,6 @@ import {
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
 const initialState: ISetUserState = {
-  name: '',
   loading: false,
   progress: [
     {

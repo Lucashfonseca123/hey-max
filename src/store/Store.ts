@@ -16,7 +16,6 @@ const sagaMiddleware = createSagaMiddleware({sagaMonitor});
 const persistConfig = {
   key: 'heyMax',
   storage: AsyncStorage,
-  stateReconciler: hardSet,
   whitelist: [],
 };
 

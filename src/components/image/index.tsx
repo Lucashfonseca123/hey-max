@@ -199,7 +199,7 @@ const MaxImage = (props: IImage) => {
       case 'CheckboxConfirmed': {
         return (
           <Image
-            source={require('../../assets/icons/CheckboxConfirmed.png')}
+            source={require('../../assets/icons/checkboxConfirmed.png')}
             width={props.width}
             height={props.height}
             default247

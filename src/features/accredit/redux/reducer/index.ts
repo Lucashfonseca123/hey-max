@@ -8,7 +8,7 @@ import {ISetUserState} from '../types/AccreditationStateTypes';
 const persistConfig = {
   key: 'authentication',
   storage: AsyncStorage,
-  whitelist: ['name'],
+  whitelist: ['name', 'progress', 'statusFinished'],
 };
 
 export default combineReducers({

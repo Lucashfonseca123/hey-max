@@ -1,5 +1,11 @@
+import {useEffect, useState} from 'react';
 import SoundRN from 'react-native-sound';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
+import {
+  finishedAction,
+  resetFinishedState,
+} from 'features/settings/redux/reducer/settingsReducer';
+import {AppState} from 'store/RootReducer';
 
 interface ISound {
   song:
@@ -13,29 +19,41 @@ interface ISound {
 }
 
 const Sound = ({song, volume, play, infinite}: ISound) => {
+  const dispatch = useDispatch();
+
+  const stateMusic = useSelector(
+    (appState: AppState) => appState.SettingsReducer.state.finishedMusic,
+  );
+
+  useEffect(() => {
+    dispatch(finishedAction());
+  }, []);
+
   const music = useSelector(
     () =>
-      new SoundRN(song, SoundRN.MAIN_BUNDLE, (error) => {
+      new SoundRN(song, SoundRN.CACHES, (error) => {
         if (error) {
           console.log('failed to load the sound', error);
           return;
         }
 
-        music.setNumberOfLoops(-1);
-
-        if (play) {
+        if (stateMusic) {
+          dispatch(resetFinishedState());
           music.play((success) => {
             if (success) {
-              console.log('successfully finished playing');
+              dispatch(finishedAction());
+              console.log('successfully finished playing ');
             } else {
               console.log('playback failed due to audio decoding errors');
             }
           });
         }
 
+        // music.setNumberOfLoops(1);
+
         music.setVolume(volume);
       }),
-    [volume, song],
+    [stateMusic],
   );
 
   return music;

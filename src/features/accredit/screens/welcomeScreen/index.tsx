@@ -36,7 +36,7 @@ const WelcomeScreen = () => {
     Sound({
       song: 'button.mp3',
       play: true,
-      volume: 0.6,
+      volume: 0.9,
       infinite: true,
     });
   }, []);

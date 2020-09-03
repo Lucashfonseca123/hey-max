@@ -8,6 +8,7 @@ import {
   Padding,
   DivButtonModal,
   PaddingBar,
+  DivVersion,
 } from './styles';
 import {TouchableOpacity, BackHandler} from 'react-native';
 import {AppState} from 'store/RootReducer';
@@ -113,6 +114,9 @@ const ConfigurationScreen = () => {
           <TouchableOpacity onPress={() => showModal()}>
             <Image type="Exit" width={40} height={40} />
           </TouchableOpacity>
+          <DivVersion>
+            <Markdown title="v 1.1" fontSize={10} />
+          </DivVersion>
         </Card>
       </DivCard>
       <Modal

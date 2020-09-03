@@ -155,7 +155,7 @@ const ResultAnswered = (props: IResultAnswered) => {
                   </Animated.View>
                   <Animated.View style={[{opacity: fadeGoodLuck}]}>
                     <Button
-                      text="Vamos!"
+                      text="Vamos lá!"
                       onPress={() => props.closeModal()}
                       widthSize={160}
                       heightSize={10}

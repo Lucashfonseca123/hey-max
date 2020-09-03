@@ -34,3 +34,8 @@ export const DivButtonModal = styled.View`
   padding-left: 32px;
   padding-right: 32px;
 `;
+
+export const DivVersion = styled.View`
+  width: 100%;
+  align-items: flex-end;
+`;

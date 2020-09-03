@@ -1,6 +1,6 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useCallback} from 'react';
 import {TouchableOpacity, BackHandler} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, StackActions} from '@react-navigation/native';
 import {GoogleSignin} from '@react-native-community/google-signin';
 import {getStages} from 'features/player/redux/reducer/menuReducer';
 import {setStateToInitial} from 'features/accredit/redux/reducer/accreditReducer';
@@ -13,7 +13,8 @@ import {
   ContainerBottom,
   ContainerEmail,
 } from './styles';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+import {AppState} from 'store/RootReducer';
 
 interface IUser {
   displayName?: string;
@@ -32,15 +33,9 @@ const WelcomeScreen = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (navigation.canGoBack()) {
-      BackHandler.exitApp();
-    }
-    BackHandler.addEventListener('hardwareBackPress', () => {
-      BackHandler.exitApp();
-      return true;
-    });
-  }, [navigation, BackHandler.addEventListener('hardwareBackPress')]);
+  const isName = useSelector(
+    (appState: AppState) => appState.AccreditFeature.state.name,
+  );
 
   // useEffect(() => {
   //   GoogleSignin.configure({
@@ -71,7 +66,11 @@ const WelcomeScreen = () => {
         <Button
           text="INICIAR"
           onPress={() => {
-            navigation.navigate('RegisterScreen');
+            if (isName) {
+              navigation.navigate('MenuScreen');
+            } else {
+              navigation.navigate('RegisterScreen');
+            }
           }}
           backgroundColor="white"
           fontSize={36}

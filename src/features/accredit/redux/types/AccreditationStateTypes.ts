@@ -20,4 +20,5 @@ export interface ISetUserState {
   status: number;
   statusFinished: IStatusFinished;
   fullGame: boolean;
+  messageError: string;
 }

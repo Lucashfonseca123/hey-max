@@ -7,7 +7,7 @@ import {
   ILoginSuccess,
   ILoginErrored,
 } from '../types/AccreditationPayloadTypes';
-import {createSlice, PayloadAction} from '@reduxjs/toolkit';
+import {createSlice, PayloadAction, createAction} from '@reduxjs/toolkit';
 
 const initialState: ISetUserState = {
   name: '',
@@ -29,6 +29,7 @@ const initialState: ISetUserState = {
     status4: false,
     status5: false,
   },
+  messageError: '',
 };
 
 const accreditReducerSlice = createSlice({
@@ -114,15 +115,20 @@ const accreditReducerSlice = createSlice({
     },
     loginSuccess(state, action: PayloadAction<ILoginSuccess>) {
       const {payload} = action;
-      state = payload;
+      state.name = payload.name;
+      state.fullGame = payload.fullGame;
+      state.progress = payload.progress;
+      state.statusFinished = payload.statusFinished;
     },
     loginErrored(state, action: PayloadAction<ILoginErrored>) {
       const {payload} = action;
-      state = payload;
+      state.messageError = payload.message;
     },
     setStateToInitial: () => initialState,
   },
 });
+
+export const login = createAction('@accredit/login');
 
 export const {
   setName,
@@ -131,5 +137,7 @@ export const {
   setStateToInitial,
   setCampaign,
   resetStatus,
+  loginSuccess,
+  loginErrored,
 } = accreditReducerSlice.actions;
 export default accreditReducerSlice.reducer;

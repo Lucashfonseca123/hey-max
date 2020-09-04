@@ -32,7 +32,7 @@ interface IStatusFinished {
 
 export interface ILoginSuccess {
   name: string;
-  status: number;
+  fullGame: boolean;
   progress: IProgress[];
   statusFinished: IStatusFinished;
 }

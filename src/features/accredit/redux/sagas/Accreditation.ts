@@ -35,48 +35,48 @@ export function* watchLoginRequest() {
 function* workerLoginRequest() {
   try {
     const {user} = yield GoogleSignin.signIn();
-    let userMatch: IUserMatch;
+    let userMatch: IUserMatch = {
+      fullGame: false,
+      name: '',
+      progress: [{}],
+      statusFinished: {},
+    };
+    let collectionUser = firestore().collection('users');
 
-    yield firestore()
-      .collection('users')
-      .get()
-      .then((querySnapshot) => {
-        console.log('Total users: ', querySnapshot.size);
+    yield collectionUser.get().then((querySnapshot) => {
+      console.log('Total users: ', querySnapshot.size);
 
-        querySnapshot.forEach((documentSnapshot) => {
-          documentSnapshot.data();
-          if (documentSnapshot.data().email === user.email) {
-            userMatch = documentSnapshot.data();
-          }
-        });
+      querySnapshot.forEach((documentSnapshot) => {
+        documentSnapshot.data();
+        if (documentSnapshot.data().email === user.email) {
+          userMatch = documentSnapshot.data();
+        }
       });
+    });
 
     if (userMatch.email && userMatch.email !== '') {
       yield put(loginSuccess(userMatch));
     } else {
-      yield firestore()
-        .collection('users')
-        .add({
-          name: user.givenName,
-          email: user.email,
-          fullGame: false,
-          progress: [
-            {
-              finished: false,
-              menuId: 0,
-              stageId: 0,
-            },
-          ],
-          statusFinished: {
-            status1: false,
-            status2: false,
-            status3: false,
-            status4: false,
-            status5: false,
+      yield collectionUser.add({
+        name: user.givenName,
+        email: user.email,
+        fullGame: false,
+        progress: [
+          {
+            finished: false,
+            menuId: 0,
+            stageId: 0,
           },
-          created_at: firestore.FieldValue.serverTimestamp(),
-        });
-      console.log('To dentro');
+        ],
+        statusFinished: {
+          status1: false,
+          status2: false,
+          status3: false,
+          status4: false,
+          status5: false,
+        },
+        created_at: firestore.FieldValue.serverTimestamp(),
+      });
       yield put(
         loginSuccess({
           name: user.givenName,

@@ -1,12 +1,17 @@
-import {takeLeading, put} from 'redux-saga/effects';
+import {takeLeading, put, select} from 'redux-saga/effects';
 import firestore from '@react-native-firebase/firestore';
 
 import {
   login,
   loginSuccess,
   loginErrored,
+  updateInfo,
+  updateInfoSuccess,
+  updateInfoErrored,
 } from 'features/accredit/redux/reducer/accreditReducer';
+import {IUpdateInfo} from '../types/AccreditationPayloadTypes';
 import {GoogleSignin, statusCodes} from '@react-native-community/google-signin';
+import {AppState} from 'store/RootReducer';
 
 interface IUser {
   displayName?: string;
@@ -23,6 +28,7 @@ interface IUser {
 
 interface IUserMatch {
   name: string;
+  email: string;
   fullGame: boolean;
   progress: object[];
   statusFinished: object;
@@ -30,6 +36,7 @@ interface IUserMatch {
 
 export function* watchLoginRequest() {
   yield takeLeading(login.type, workerLoginRequest);
+  yield takeLeading(updateInfo.type, workerUpdateInfoRequest);
 }
 
 function* workerLoginRequest() {
@@ -38,23 +45,24 @@ function* workerLoginRequest() {
     let userMatch: IUserMatch = {
       fullGame: false,
       name: '',
+      email: '',
       progress: [{}],
       statusFinished: {},
     };
     let collectionUser = firestore().collection('users');
+    console.log(collectionUser.get());
 
     yield collectionUser.get().then((querySnapshot) => {
       console.log('Total users: ', querySnapshot.size);
 
       querySnapshot.forEach((documentSnapshot) => {
-        documentSnapshot.data();
         if (documentSnapshot.data().email === user.email) {
           userMatch = documentSnapshot.data();
         }
       });
     });
 
-    if (userMatch.email && userMatch.email !== '') {
+    if (userMatch.email !== '') {
       yield put(loginSuccess(userMatch));
     } else {
       yield collectionUser.add({
@@ -80,6 +88,7 @@ function* workerLoginRequest() {
       yield put(
         loginSuccess({
           name: user.givenName,
+          email: user.email,
           fullGame: false,
           progress: [
             {
@@ -100,20 +109,74 @@ function* workerLoginRequest() {
     }
   } catch (error) {
     if (error.code === statusCodes.SIGN_IN_CANCELLED) {
-      loginErrored({message: 'Login não efetuado'});
+      yield put(loginErrored({message: 'Login não efetuado'}));
       // user cancelled the login flow
     } else if (error.code === statusCodes.IN_PROGRESS) {
-      loginErrored({message: 'Login não progrediu'});
+      yield put(loginErrored({message: 'Login não progrediu'}));
       // operation (e.g. sign in) is in progress already
     } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
-      loginErrored({message: 'Serviço não disponível'});
+      yield put(loginErrored({message: 'Serviço não disponível'}));
       // play services not available or outdated
     } else {
       // some other error happened
-      loginErrored({
-        message:
-          'Ocorreu um erro inesperado. Tente novamente em alguns segundos.',
+      yield put(
+        loginErrored({
+          message:
+            'Ocorreu um erro inesperado. Tente novamente em alguns segundos.',
+        }),
+      );
+    }
+  }
+}
+
+function* workerUpdateInfoRequest(action: typeof updateInfo) {
+  try {
+    const payload: IUpdateInfo = action.payload;
+    let documentMatch: string;
+    let collectionUser = firestore().collection('users');
+
+    const emailUser = yield select(
+      (appState: AppState) => appState.AccreditFeature.state.email,
+    );
+
+    yield collectionUser.get().then((querySnapshot) => {
+      console.log('Total users: ', querySnapshot.size);
+
+      querySnapshot.forEach((documentSnapshot) => {
+        documentSnapshot.data();
+        if (documentSnapshot.data().email === emailUser) {
+          documentMatch = documentSnapshot.id;
+        }
       });
+    });
+
+    if (documentMatch !== '') {
+      console.log('To dentro');
+      yield firestore().collection('users').doc(documentMatch).update({
+        fullGame: payload.fullGame,
+        progress: payload.progress,
+        statusFinished: payload.statusFinished,
+      });
+      yield put(updateInfoSuccess());
+    }
+  } catch (error) {
+    if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+      yield put(updateInfoErrored({message: 'Login não efetuado'}));
+      // user cancelled the login flow
+    } else if (error.code === statusCodes.IN_PROGRESS) {
+      yield put(updateInfoErrored({message: 'Login não progrediu'}));
+      // operation (e.g. sign in) is in progress already
+    } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+      yield put(updateInfoErrored({message: 'Serviço não disponível'}));
+      // play services not available or outdated
+    } else {
+      // some other error happened
+      yield put(
+        updateInfoErrored({
+          message:
+            'Ocorreu um erro inesperado. Tente novamente em alguns segundos.',
+        }),
+      );
     }
   }
 }

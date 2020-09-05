@@ -14,7 +14,9 @@ interface IStatusFinished {
 
 export interface ISetUserState {
   name: string;
+  email: string;
   loading?: boolean;
+  isUpdating?: boolean;
   progress: IProgress[];
   campaign: number;
   status: number;

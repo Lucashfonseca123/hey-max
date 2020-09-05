@@ -6,8 +6,9 @@ import {Card, Markdown} from 'components';
 import Carousel, {Pagination} from 'react-native-snap-carousel';
 import {headerComposer, Header} from 'navigation/NavigationMixins';
 import {Container, BottomContainer, Item} from './styles';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import {AppState} from 'store/RootReducer';
+import {updateInfo} from 'features/accredit/redux/reducer/accreditReducer';
 
 const {width: screenWidth} = Dimensions.get('window');
 
@@ -25,10 +26,40 @@ const MenuScreen = () => {
   const [stage, setStage] = useState([{}]);
   const carouselRef = useRef(null);
   const {navigate, setOptions} = useNavigation();
+  const dispatch = useDispatch();
 
   const stages = useSelector(
     (appState: AppState) => appState.PlayerFeature.menu.menus,
   );
+
+  const progress = useSelector(
+    (appState: AppState) => appState.AccreditFeature.state.progress,
+  );
+
+  const statusFinished = useSelector(
+    (appState: AppState) => appState.AccreditFeature.state.statusFinished,
+  );
+
+  const fullGame = useSelector(
+    (appState: AppState) => appState.AccreditFeature.state.fullGame,
+  );
+
+  const email = useSelector(
+    (appState: AppState) => appState.AccreditFeature.state.email,
+  );
+
+  useEffect(() => {
+    if (email !== '') {
+      console.log('to dentro');
+      dispatch(
+        updateInfo({
+          fullGame: fullGame,
+          progress: progress,
+          statusFinished: statusFinished,
+        }),
+      );
+    }
+  }, [email, fullGame, progress, statusFinished]);
 
   useEffect(() => {
     BackHandler.addEventListener('hardwareBackPress', () => {

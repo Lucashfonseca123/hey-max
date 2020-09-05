@@ -32,11 +32,26 @@ interface IStatusFinished {
 
 export interface ILoginSuccess {
   name: string;
+  email: string;
   fullGame: boolean;
   progress: IProgress[];
   statusFinished: IStatusFinished;
 }
 
 export interface ILoginErrored {
+  message: string;
+}
+
+export interface IUpdateInfo {
+  fullGame: boolean;
+  progress: IProgress[];
+  statusFinished: IStatusFinished;
+}
+export interface IUpdateSuccess {
+  fullGame: boolean;
+  progress: IProgress[];
+  statusFinished: IStatusFinished;
+}
+export interface IUpdateErrored {
   message: string;
 }

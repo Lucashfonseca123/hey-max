@@ -1,4 +1,4 @@
-import React, {useState, useCallback} from 'react';
+import React, {useState, useCallback, useEffect} from 'react';
 import {Markdown, Image, Card, Modal, Button} from '../../../../components';
 import {useNavigation} from '@react-navigation/native';
 import {headerComposer, Header} from 'navigation/NavigationMixins';
@@ -12,13 +12,15 @@ import {
 } from './styles';
 import {TouchableOpacity, BackHandler} from 'react-native';
 import {AppState} from 'store/RootReducer';
+import {setCampaign} from 'features/accredit/redux/reducer/accreditReducer';
 import * as Progress from 'react-native-progress';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 
 const ConfigurationScreen = () => {
   const navigation = useNavigation();
   const [visibleModal, setVisibleModal] = useState<boolean>(false);
   const [sound, setSound] = useState(false);
+  const dispatch = useDispatch();
 
   navigation.setOptions(
     headerComposer({
@@ -27,6 +29,34 @@ const ConfigurationScreen = () => {
       backgroundColor: '#FFEF60',
     }),
   );
+
+  const totalSizeStagesFinished = useSelector((appState: AppState) =>
+    appState.AccreditFeature.state.progress.reduce((total, stagesAccredit) => {
+      if (!stagesAccredit.finished) {
+        return (total += stagesAccredit.stageId);
+      } else {
+        return (total +=
+          appState.PlayerFeature.menu.menus[stagesAccredit.menuId].stage
+            .length);
+      }
+    }, 0),
+  );
+
+  const totalSizeStages = useSelector((appState: AppState) =>
+    appState.PlayerFeature.menu.menus.reduce(
+      (total, menu) => (total += menu.stage.length),
+      0,
+    ),
+  );
+
+  useEffect(() => {
+    dispatch(
+      setCampaign({
+        totalSizeStages: totalSizeStages,
+        totalSizeStagesFinished: totalSizeStagesFinished,
+      }),
+    );
+  }, [totalSizeStages, totalSizeStagesFinished]);
 
   const campaign = useSelector(
     (appState: AppState) => appState.AccreditFeature.state.campaign,

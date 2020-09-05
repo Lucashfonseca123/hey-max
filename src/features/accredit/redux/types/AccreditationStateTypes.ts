@@ -17,6 +17,7 @@ export interface ISetUserState {
   email: string;
   loading?: boolean;
   isUpdating?: boolean;
+  loginSuccess?: boolean;
   progress: IProgress[];
   campaign: number;
   status: number;

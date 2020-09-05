@@ -8,7 +8,13 @@ import {resetStage} from 'features/player/redux/reducer/playerReducer';
 import {AppState} from 'store/RootReducer';
 
 interface IResultAnswered {
-  type: 'success' | 'errored' | 'nextLevel' | 'finishLevel' | 'endGame';
+  type:
+    | 'loginSuccess'
+    | 'success'
+    | 'errored'
+    | 'nextLevel'
+    | 'finishLevel'
+    | 'endGame';
   isVisible: boolean;
   closeModal: Function;
   typeProgress?: 'baby' | 'child' | 'teenager' | 'young' | 'adult' | 'old';
@@ -20,6 +26,10 @@ const ResultAnswered = (props: IResultAnswered) => {
 
   const idMenu = useSelector(
     (appState: AppState) => appState.PlayerFeature.player.idMenu,
+  );
+
+  const nome = useSelector(
+    (appState: AppState) => appState.AccreditFeature.state.name,
   );
 
   const fadeAnim = useRef(new Animated.Value(0)).current;
@@ -43,6 +53,37 @@ const ResultAnswered = (props: IResultAnswered) => {
 
   const getModal = useCallback(() => {
     switch (props.type) {
+      case 'loginSuccess':
+        return (
+          <Modal
+            isVisible={props.isVisible}
+            typeMax="FelizOrelhaBaixoDente"
+            closeModal={props.closeModal}>
+            <Markdown
+              textAlign="center"
+              title={`Olá ${nome}`}
+              fontColor="#FFEF60"
+              fontSize={22}
+            />
+            <Markdown
+              title="Seja bem-vindo!"
+              fontColor="#FFEF60"
+              fontSize={26}
+            />
+            <DivButtonModal>
+              <Button
+                text="Vamos lá!"
+                onPress={() => {
+                  navigate('MenuScreen');
+                  props.closeModal();
+                }}
+                widthSize={110}
+                heightSize={10}
+                fontSize={16}
+              />
+            </DivButtonModal>
+          </Modal>
+        );
       case 'success':
         return (
           <Modal

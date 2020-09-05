@@ -1,11 +1,15 @@
-import React, {useEffect, useCallback} from 'react';
+import React, {useEffect, useCallback, useState} from 'react';
 import {TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {GoogleSignin} from '@react-native-community/google-signin';
 import {getStages} from 'features/player/redux/reducer/menuReducer';
-import {login as loginReducer} from 'features/accredit/redux/reducer/accreditReducer';
+import {
+  login as loginReducer,
+  resetLoading,
+} from 'features/accredit/redux/reducer/accreditReducer';
 
 import {Markdown, Button, Image} from '../../../../components';
+import ResultAnswered from 'features/player/screens/playerScreen/resultAnswered';
 import {
   Container,
   ContainerTop,
@@ -30,11 +34,16 @@ interface IUser {
 }
 
 const WelcomeScreen = () => {
+  const [isVisible, setVisible] = useState(false);
   const navigation = useNavigation();
   const dispatch = useDispatch();
 
   const isName = useSelector(
     (appState: AppState) => appState.AccreditFeature.state.name,
+  );
+
+  const loginStatus = useSelector(
+    (appState: AppState) => appState.AccreditFeature.state.loginSuccess,
   );
 
   useEffect(() => {
@@ -51,9 +60,20 @@ const WelcomeScreen = () => {
     // dispatch(setStateToInitial());
   }, [dispatch]);
 
+  useEffect(() => {
+    if (loginStatus) {
+      setVisible(true);
+    }
+    return () => dispatch(resetLoading());
+  }, [loginStatus]);
+
   const login = useCallback(() => {
     dispatch(loginReducer());
   }, [dispatch]);
+
+  const closeModal = useCallback(() => {
+    setVisible(false);
+  }, []);
 
   return (
     <Container>
@@ -85,6 +105,11 @@ const WelcomeScreen = () => {
       <ContainerBottom>
         <Image type="Feliz" />
       </ContainerBottom>
+      <ResultAnswered
+        type="loginSuccess"
+        isVisible={isVisible}
+        closeModal={closeModal}
+      />
     </Container>
   );
 };

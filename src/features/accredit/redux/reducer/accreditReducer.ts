@@ -17,6 +17,7 @@ const initialState: ISetUserState = {
   email: '',
   loading: false,
   isUpdating: false,
+  loginSuccess: false,
   progress: [
     {
       menuId: 0,
@@ -96,6 +97,7 @@ const accreditReducerSlice = createSlice({
       state.loading = false;
       state.isUpdating = false;
       state.messageError = '';
+      state.loginSuccess = false;
     },
     resetStatus(state, action: PayloadAction<IResetStatus>) {
       const {
@@ -127,6 +129,7 @@ const accreditReducerSlice = createSlice({
       state.fullGame = payload.fullGame;
       state.progress = payload.progress;
       state.statusFinished = payload.statusFinished;
+      state.loginSuccess = true;
     },
     loginErrored(state, action: PayloadAction<ILoginErrored>) {
       const {payload} = action;

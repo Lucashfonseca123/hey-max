@@ -145,7 +145,7 @@ const ConfigurationScreen = () => {
             <Image type="Exit" width={40} height={40} />
           </TouchableOpacity>
           <DivVersion>
-            <Markdown title="v 1.2" fontSize={10} />
+            <Markdown title="v 1.3" fontSize={10} />
           </DivVersion>
         </Card>
       </DivCard>

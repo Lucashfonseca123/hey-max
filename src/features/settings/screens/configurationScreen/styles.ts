@@ -12,8 +12,7 @@ export const Container = styled.View`
 export const DivCard = styled.View`
   padding-left: 30px;
   flex: 1;
-  height: 100%;
-  margin-top: -20px;
+  margin-top: 20px;
 `;
 
 export const Padding = styled.View`

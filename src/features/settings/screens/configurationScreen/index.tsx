@@ -10,7 +10,7 @@ import {
   PaddingBar,
   DivVersion,
 } from './styles';
-import {TouchableOpacity, BackHandler} from 'react-native';
+import {TouchableOpacity, BackHandler, View} from 'react-native';
 import {AppState} from 'store/RootReducer';
 import {setCampaign} from 'features/accredit/redux/reducer/accreditReducer';
 import * as Progress from 'react-native-progress';
@@ -129,7 +129,7 @@ const ConfigurationScreen = () => {
           <Image type={getImage()} width={95} height={120} />
           <Padding />
 
-          <Markdown title="Som" fontSize={18} />
+          {/* <Markdown title="Som" fontSize={18} />
           <Padding />
           <TouchableOpacity onPress={() => setSound(!sound)}>
             {!sound ? (
@@ -137,7 +137,7 @@ const ConfigurationScreen = () => {
             ) : (
               <Image type="CheckboxConfirmed" width={40} height={40} />
             )}
-          </TouchableOpacity>
+          </TouchableOpacity> */}
           <Padding />
           <Markdown title="Sair" fontSize={18} />
           <Padding />

@@ -35,8 +35,6 @@ const ResultAnswered = (props: IResultAnswered) => {
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const fadeGoodLuck = useRef(new Animated.Value(0)).current;
 
-  console.log(fadeAnim);
-
   useEffect(() => {
     Animated.timing(fadeAnim, {
       toValue: 1,

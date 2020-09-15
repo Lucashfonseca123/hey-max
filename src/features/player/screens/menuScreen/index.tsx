@@ -50,7 +50,6 @@ const MenuScreen = () => {
 
   useEffect(() => {
     if (email !== '') {
-      console.log('to dentro');
       dispatch(
         updateInfo({
           fullGame: fullGame,

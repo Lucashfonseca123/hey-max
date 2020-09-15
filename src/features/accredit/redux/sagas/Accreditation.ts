@@ -50,10 +50,9 @@ function* workerLoginRequest() {
       statusFinished: {},
     };
     let collectionUser = firestore().collection('users');
-    console.log(collectionUser.get());
 
     yield collectionUser.get().then((querySnapshot) => {
-      console.log('Total users: ', querySnapshot.size);
+      // console.log('Total users: ', querySnapshot.size);
 
       querySnapshot.forEach((documentSnapshot) => {
         if (documentSnapshot.data().email === user.email) {
@@ -140,7 +139,7 @@ function* workerUpdateInfoRequest(action: typeof updateInfo) {
     );
 
     yield collectionUser.get().then((querySnapshot) => {
-      console.log('Total users: ', querySnapshot.size);
+      // console.log('Total users: ', querySnapshot.size);
 
       querySnapshot.forEach((documentSnapshot) => {
         documentSnapshot.data();
@@ -151,7 +150,6 @@ function* workerUpdateInfoRequest(action: typeof updateInfo) {
     });
 
     if (documentMatch !== '') {
-      console.log('To dentro');
       yield firestore().collection('users').doc(documentMatch).update({
         fullGame: payload.fullGame,
         progress: payload.progress,

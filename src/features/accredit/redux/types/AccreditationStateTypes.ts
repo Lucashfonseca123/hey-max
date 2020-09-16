@@ -23,5 +23,6 @@ export interface ISetUserState {
   status: number;
   statusFinished: IStatusFinished;
   fullGame: boolean;
+  surveyAnswered: boolean;
   messageError: string;
 }

@@ -9,6 +9,7 @@ import {
   IUpdateSuccess,
   IUpdateErrored,
   IUpdateInfo,
+  ISurvey,
 } from '../types/AccreditationPayloadTypes';
 import {createSlice, PayloadAction, createAction} from '@reduxjs/toolkit';
 
@@ -18,6 +19,7 @@ const initialState: ISetUserState = {
   loading: false,
   isUpdating: false,
   loginSuccess: false,
+  surveyAnswered: false,
   progress: [
     {
       menuId: 0,
@@ -130,6 +132,7 @@ const accreditReducerSlice = createSlice({
       state.progress = payload.progress;
       state.statusFinished = payload.statusFinished;
       state.loginSuccess = true;
+      state.surveyAnswered = payload.surveyAnswered;
     },
     loginErrored(state, action: PayloadAction<ILoginErrored>) {
       const {payload} = action;
@@ -143,6 +146,16 @@ const accreditReducerSlice = createSlice({
       state.loading = false;
       state.messageError = payload.message;
     },
+    surveyAnsweredSuccess(state) {
+      state.loading = true;
+      state.surveyAnswered = true;
+    },
+    surveyAnsweredErrored(state, action: PayloadAction<IUpdateErrored>) {
+      const {payload} = action;
+      state.loading = false;
+      state.surveyAnswered = false;
+      state.messageError = payload.message;
+    },
     setStateToInitial: () => initialState,
   },
 });
@@ -150,6 +163,10 @@ const accreditReducerSlice = createSlice({
 export const login = createAction('@accredit/login');
 export const updateInfo = createAction<IUpdateInfo, '@accredit/updateInfo'>(
   '@accredit/updateInfo',
+);
+
+export const surveyAnswered = createAction<ISurvey, '@accredit/surverAnswred'>(
+  '@accredit/surverAnswred',
 );
 
 export const {
@@ -163,5 +180,7 @@ export const {
   loginErrored,
   updateInfoSuccess,
   updateInfoErrored,
+  surveyAnsweredSuccess,
+  surveyAnsweredErrored,
 } = accreditReducerSlice.actions;
 export default accreditReducerSlice.reducer;

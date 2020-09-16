@@ -8,7 +8,7 @@ import {
   resetLoading,
 } from 'features/accredit/redux/reducer/accreditReducer';
 
-import {Markdown, Button, Image} from '../../../../components';
+import {Markdown, Button, Image} from 'components';
 import ResultAnswered from 'features/player/screens/playerScreen/resultAnswered';
 import {
   Container,
@@ -19,19 +19,6 @@ import {
 } from './styles';
 import {useDispatch, useSelector} from 'react-redux';
 import {AppState} from 'store/RootReducer';
-
-interface IUser {
-  displayName?: string;
-  email?: string;
-  emailVerified?: boolean;
-  isAnonymous?: false;
-  metadata?: object;
-  phoneNumber?: number;
-  photoURL?: string;
-  providerData?: object;
-  providerId?: string;
-  uid?: string;
-}
 
 const WelcomeScreen = () => {
   const [isVisible, setVisible] = useState(false);
@@ -44,6 +31,12 @@ const WelcomeScreen = () => {
 
   const loginStatus = useSelector(
     (appState: AppState) => appState.AccreditFeature.state.loginSuccess,
+  );
+
+  const userLogInitial = useSelector((appState: AppState) =>
+    appState.AccreditFeature.state.progress.map((progress) =>
+      progress.finished === false && progress.stageId === 0 ? true : false,
+    ),
   );
 
   useEffect(() => {
@@ -76,41 +69,51 @@ const WelcomeScreen = () => {
   }, []);
 
   return (
-    <Container>
-      <ContainerTop>
-        <Markdown title="hey max" fontSize={64} />
-      </ContainerTop>
-      <ContainerEmail>
-        <Markdown title="Faça seu login pelo e-mail" fontSize={16} />
-        <TouchableOpacity style={{marginTop: 16}} onPress={login}>
-          <Image type="Gmail" height={40} width={60} />
-        </TouchableOpacity>
-      </ContainerEmail>
-      <ContainerMiddle>
-        <Button
-          text="INICIAR"
-          onPress={() => {
-            if (isName) {
-              navigation.navigate('MenuScreen');
-            } else {
-              navigation.navigate('RegisterScreen');
-            }
-          }}
-          backgroundColor="white"
-          fontSize={36}
-          heightSize={16}
-          widthSize={300}
+    <>
+      <Container>
+        <ContainerTop>
+          <Markdown title="hey max" fontSize={64} />
+        </ContainerTop>
+
+        <ContainerEmail>
+          <Markdown title="Faça seu login pelo e-mail" fontSize={16} />
+          <TouchableOpacity style={{marginTop: 16}} onPress={login}>
+            <Image type="Gmail" height={40} width={60} />
+          </TouchableOpacity>
+        </ContainerEmail>
+        <ContainerMiddle>
+          <Button
+            text="INICIAR"
+            onPress={() => {
+              if (isName) {
+                if (
+                  userLogInitial[0] === false ||
+                  userLogInitial[1] === false
+                ) {
+                  navigation.navigate('MenuScreen');
+                } else {
+                  navigation.navigate('AvatarPresentationScreen');
+                }
+              } else {
+                navigation.navigate('RegisterScreen');
+              }
+            }}
+            backgroundColor="white"
+            fontSize={36}
+            heightSize={16}
+            widthSize={300}
+          />
+        </ContainerMiddle>
+        <ContainerBottom>
+          <Image type="Feliz" />
+        </ContainerBottom>
+        <ResultAnswered
+          type="loginSuccess"
+          isVisible={isVisible}
+          closeModal={closeModal}
         />
-      </ContainerMiddle>
-      <ContainerBottom>
-        <Image type="Feliz" />
-      </ContainerBottom>
-      <ResultAnswered
-        type="loginSuccess"
-        isVisible={isVisible}
-        closeModal={closeModal}
-      />
-    </Container>
+      </Container>
+    </>
   );
 };
 

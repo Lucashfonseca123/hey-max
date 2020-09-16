@@ -36,6 +36,7 @@ export interface ILoginSuccess {
   fullGame: boolean;
   progress: IProgress[];
   statusFinished: IStatusFinished;
+  surveyAnswered: false;
 }
 
 export interface ILoginErrored {
@@ -54,4 +55,8 @@ export interface IUpdateSuccess {
 }
 export interface IUpdateErrored {
   message: string;
+}
+
+export interface ISurvey {
+  surverAnswered: string;
 }

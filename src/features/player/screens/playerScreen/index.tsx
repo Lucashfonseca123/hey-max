@@ -5,6 +5,8 @@ import {
   setProgress,
   setCampaign,
   resetStatus,
+  resetLoading,
+  surveyAnswered,
 } from 'features/accredit/redux/reducer/accreditReducer';
 import {
   getStage,
@@ -23,16 +25,19 @@ import {
   PositionImage,
 } from './styles';
 import ResultAnswered from './resultAnswered';
+import SatisfactionSurvey from './satisfactionSurvey';
 import {Markdown, Image, Button} from 'components';
 import {AppState} from 'store/RootReducer';
 import {BackHandler} from 'react-native';
 
 const PlayerScreen = () => {
   const [visibleModal, setVisibleModal] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [typeModal, setTypeModal] = useState(
     'success' || 'errored' || 'nextLevel' || 'finishLevel' || 'endGame',
   );
   const [typeModalProgress, setTypeModalProgress] = useState('');
+  const [surveyModalVisible, setSurveyModalVisible] = useState(false);
   const {
     params: {id},
   } = useRoute();
@@ -110,6 +115,33 @@ const PlayerScreen = () => {
       0,
     ),
   );
+
+  const fullGame = useSelector(
+    (appState: AppState) => appState.AccreditFeature.state.fullGame,
+  );
+
+  const surveyStatus = useSelector(
+    (appState: AppState) => appState.AccreditFeature.state.surveyAnswered,
+  );
+
+  const statusLoading = useSelector(
+    (appState: AppState) => appState.AccreditFeature.state.loading,
+  );
+
+  useEffect(() => {
+    if (statusLoading) {
+      console.log('To dentro');
+      setLoading(false);
+      setSurveyModalVisible(false);
+      dispatch(resetLoading());
+    }
+  }, [statusLoading, dispatch]);
+
+  useEffect(() => {
+    if (fullGame && !surveyStatus) {
+      setSurveyModalVisible(true);
+    }
+  }, [fullGame, surveyStatus]);
 
   useEffect(() => {
     dispatch(
@@ -261,6 +293,15 @@ const PlayerScreen = () => {
         isVisible={visibleModal}
         closeModal={closeModal}
         typeProgress={typeModalProgress}
+      />
+      <SatisfactionSurvey
+        loading={loading}
+        isVisible={surveyModalVisible}
+        onPressed={(item: string) => {
+          dispatch(surveyAnswered({surverAnswered: item}));
+          setLoading(true);
+          // console.log(item);
+        }}
       />
     </>
   );

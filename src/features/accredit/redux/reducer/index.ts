@@ -8,7 +8,14 @@ import {ISetUserState} from '../types/AccreditationStateTypes';
 const persistConfig = {
   key: 'authentication',
   storage: AsyncStorage,
-  whitelist: ['name', 'email', 'progress', 'statusFinished'],
+  whitelist: [
+    'name',
+    'email',
+    'progress',
+    'statusFinished',
+    'surveyAnswered',
+    'fullGame',
+  ],
 };
 
 export default combineReducers({

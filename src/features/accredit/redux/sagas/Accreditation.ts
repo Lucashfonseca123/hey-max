@@ -8,8 +8,11 @@ import {
   updateInfo,
   updateInfoSuccess,
   updateInfoErrored,
+  surveyAnswered,
+  surveyAnsweredSuccess,
+  surveyAnsweredErrored,
 } from 'features/accredit/redux/reducer/accreditReducer';
-import {IUpdateInfo} from '../types/AccreditationPayloadTypes';
+import {IUpdateInfo, ISurvey} from '../types/AccreditationPayloadTypes';
 import {GoogleSignin, statusCodes} from '@react-native-community/google-signin';
 import {AppState} from 'store/RootReducer';
 
@@ -37,6 +40,7 @@ interface IUserMatch {
 export function* watchLoginRequest() {
   yield takeLeading(login.type, workerLoginRequest);
   yield takeLeading(updateInfo.type, workerUpdateInfoRequest);
+  yield takeLeading(surveyAnswered.type, workerSurveyAnswerRequest);
 }
 
 function* workerLoginRequest() {
@@ -68,6 +72,7 @@ function* workerLoginRequest() {
         name: user.givenName,
         email: user.email,
         fullGame: false,
+        surveyAnswered: false,
         progress: [
           {
             finished: false,
@@ -103,6 +108,7 @@ function* workerLoginRequest() {
             status4: false,
             status5: false,
           },
+          surveyAnswered: false,
         }),
       );
     }
@@ -166,6 +172,56 @@ function* workerUpdateInfoRequest(action: typeof updateInfo) {
       // operation (e.g. sign in) is in progress already
     } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
       yield put(updateInfoErrored({message: 'Serviço não disponível'}));
+      // play services not available or outdated
+    } else {
+      // some other error happened
+      yield put(
+        updateInfoErrored({
+          message:
+            'Ocorreu um erro inesperado. Tente novamente em alguns segundos.',
+        }),
+      );
+    }
+  }
+}
+
+function* workerSurveyAnswerRequest(action: typeof surveyAnswered) {
+  try {
+    const payload: ISurvey = action.payload;
+    let documentMatch: string;
+    let collectionUser = firestore().collection('users');
+
+    const emailUser = yield select(
+      (appState: AppState) => appState.AccreditFeature.state.email,
+    );
+
+    yield collectionUser.get().then((querySnapshot) => {
+      // console.log('Total users: ', querySnapshot.size);
+
+      querySnapshot.forEach((documentSnapshot) => {
+        documentSnapshot.data();
+        if (documentSnapshot.data().email === emailUser) {
+          documentMatch = documentSnapshot.id;
+        }
+      });
+    });
+
+    if (documentMatch !== '') {
+      yield firestore().collection('users').doc(documentMatch).update({
+        surveyAnswered: true,
+        surveyAnsweredDescription: payload.surverAnswered,
+      });
+      yield put(surveyAnsweredSuccess());
+    }
+  } catch (error) {
+    if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+      yield put(surveyAnsweredErrored({message: 'Login não efetuado'}));
+      // user cancelled the login flow
+    } else if (error.code === statusCodes.IN_PROGRESS) {
+      yield put(surveyAnsweredErrored({message: 'Login não progrediu'}));
+      // operation (e.g. sign in) is in progress already
+    } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+      yield put(surveyAnsweredErrored({message: 'Serviço não disponível'}));
       // play services not available or outdated
     } else {
       // some other error happened

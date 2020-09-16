@@ -5,7 +5,9 @@ import {Modal, Markdown, Button, Image} from 'components';
 import {useNavigation} from '@react-navigation/native';
 import {useDispatch, useSelector} from 'react-redux';
 import {resetStage} from 'features/player/redux/reducer/playerReducer';
+import {surveyAnswered} from 'features/accredit/redux/reducer/accreditReducer';
 import {AppState} from 'store/RootReducer';
+import SatisfactionSurvey from '../satisfactionSurvey';
 
 interface IResultAnswered {
   type:
@@ -30,6 +32,12 @@ const ResultAnswered = (props: IResultAnswered) => {
 
   const nome = useSelector(
     (appState: AppState) => appState.AccreditFeature.state.name,
+  );
+
+  const userLogInitial = useSelector((appState: AppState) =>
+    appState.AccreditFeature.state.progress.map((progress) =>
+      progress.finished === false && progress.stageId === 0 ? true : false,
+    ),
   );
 
   const fadeAnim = useRef(new Animated.Value(0)).current;
@@ -72,7 +80,14 @@ const ResultAnswered = (props: IResultAnswered) => {
               <Button
                 text="Vamos lá!"
                 onPress={() => {
-                  navigate('MenuScreen');
+                  if (
+                    userLogInitial[0] === false ||
+                    userLogInitial[1] === false
+                  ) {
+                    navigate('MenuScreen');
+                  } else {
+                    navigate('AvatarPresentationScreen');
+                  }
                   props.closeModal();
                 }}
                 widthSize={110}
@@ -139,7 +154,9 @@ const ResultAnswered = (props: IResultAnswered) => {
               />
               <Button
                 text="Tentar de novo"
-                onPress={() => props.closeModal()}
+                onPress={() => {
+                  props.closeModal();
+                }}
                 widthSize={160}
                 heightSize={10}
                 fontSize={16}
@@ -316,7 +333,9 @@ const ResultAnswered = (props: IResultAnswered) => {
                   </DivImageModal>
                   <Button
                     text="Continuar"
-                    onPress={() => props.closeModal()}
+                    onPress={() => {
+                      props.closeModal();
+                    }}
                     widthSize={160}
                     heightSize={10}
                     fontSize={16}

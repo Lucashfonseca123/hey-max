@@ -10,6 +10,7 @@ interface ModalComponent {
   children?: ReactNode;
   width?: number;
   height?: number;
+  noPadding?: boolean;
   typeMax?:
     | 'TristeChoro'
     | 'Confuso'
@@ -27,6 +28,7 @@ const ModalComponent = ({
   height,
   closeModal,
   typeMax,
+  noPadding,
 }: ModalComponent) => {
   return (
     <Modal isVisible={isVisible} style={{paddingBottom: 70}}>
@@ -37,7 +39,7 @@ const ModalComponent = ({
           height={typeMax === 'TristeChoro' ? 130 : 140}
         />
       </ContainerModal>
-      <Container width={width} height={height}>
+      <Container width={width} noPadding={noPadding} height={height}>
         {!typeMax ? (
           <ContainerButton>
             <TouchableOpacity onPress={closeModal}>

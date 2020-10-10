@@ -133,6 +133,180 @@
                     "answerCorrect": "Melancia"
                 }
             ]
+        },
+        {
+            "id": 2,
+            "name": "Animais",
+            "image": "https://i.imgur.com/gyckq5E.jpg",
+            "stage": [
+                {
+                    "id": 0,
+                    "picture": "Cavalo",
+                    "alternative": [
+                        "Boi",
+                        "Cavalo",
+                        "Frango"
+                    ],
+                    "answerCorrect": "Cavalo"
+                },
+                {
+                    "id": 1,
+                    "picture": "Coelho",
+                    "alternative": [
+                        "Coelho",
+                        "Raposa",
+                        "Suricatu"
+                    ],
+                    "answerCorrect": "Coelho"
+                },
+                {
+                    "id": 2,
+                    "picture": "Dog",
+                    "alternative": [
+                        "Gato",
+                        "Porco",
+                        "Cachorro"
+                    ],
+                    "answerCorrect": "Cachorro"
+                },
+                {
+                    "id": 3,
+                    "picture": "Galinha",
+                    "alternative": [
+                        "Galinha",
+                        "Guaxini",
+                        "Gato"
+                    ],
+                    "answerCorrect": "Galinha"
+                },
+                {
+                    "id": 4,
+                    "picture": "Gato",
+                    "alternative": [
+                        "Cachorro",
+                        "Girafa",
+                        "Gato"
+                    ],
+                    "answerCorrect": "Gato"
+                },
+                {
+                    "id": 5,
+                    "picture": "Porco",
+                    "alternative": [
+                        "Galinha",
+                        "Porco",
+                        "Leão"
+                    ],
+                    "answerCorrect": "Porco"
+                },
+                {
+                    "id": 6,
+                    "picture": "Rato",
+                    "alternative": [
+                        "Gauxino",
+                        "Cachorro",
+                        "Rato"
+                    ],
+                    "answerCorrect": "Rato"
+                },
+                {
+                    "id": 7,
+                    "picture": "Vaca",
+                    "alternative": [
+                        "Vaca",
+                        "Touro",
+                        "Elefante"
+                    ],
+                    "answerCorrect": "Vaca"
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "name": "Veículos",
+            "image": "https://i.imgur.com/rHJvAls.jpg",
+            "stage": [
+                {
+                    "id": 0,
+                    "picture": "Aviao",
+                    "alternative": [
+                        "Navio",
+                        "Carro",
+                        "Avião"
+                    ],
+                    "answerCorrect": "Avião"
+                },
+                {
+                    "id": 1,
+                    "picture": "Caminhao",
+                    "alternative": [
+                        "Caminhão",
+                        "Trem",
+                        "Moto"
+                    ],
+                    "answerCorrect": "Caminhão"
+                },
+                {
+                    "id": 2,
+                    "picture": "Camionete",
+                    "alternative": [
+                        "Caminhão",
+                        "Camionete",
+                        "Carro"
+                    ],
+                    "answerCorrect": "Camionete"
+                },
+                {
+                    "id": 3,
+                    "picture": "Carro",
+                    "alternative": [
+                        "Bicicleta",
+                        "Navio",
+                        "Carro"
+                    ],
+                    "answerCorrect": "Carro"
+                },
+                {
+                    "id": 4,
+                    "picture": "Foguete",
+                    "alternative": [
+                        "Foguete",
+                        "Balão",
+                        "Avião"
+                    ],
+                    "answerCorrect": "Foguete"
+                },
+                {
+                    "id": 5,
+                    "picture": "Moto",
+                    "alternative": [
+                        "Carro",
+                        "Moto",
+                        "Triciclo"
+                    ],
+                    "answerCorrect": "Moto"
+                },
+                {
+                    "id": 6,
+                    "picture": "Navio",
+                    "alternative": [
+                        "Caminhão",
+                        "Camionete",
+                        "Navio"
+                    ],
+                    "answerCorrect": "Navio"
+                },
+                {
+                    "id": 7,
+                    "picture": "Trem",
+                    "alternative": [
+                        "Carro",
+                        "Trem",
+                        "Caminhão"
+                    ],
+                    "answerCorrect": "Trem"
+                }
+            ]
         }
     ]
 }

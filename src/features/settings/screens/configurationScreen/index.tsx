@@ -1,7 +1,7 @@
-import React, {useState, useCallback, useEffect} from 'react';
-import {Markdown, Image, Card, Modal, Button} from '../../../../components';
-import {useNavigation} from '@react-navigation/native';
-import {headerComposer, Header} from 'navigation/NavigationMixins';
+import React, { useState, useCallback, useEffect } from 'react';
+import { Markdown, Image, Card, Modal, Button } from '../../../../components';
+import { useNavigation } from '@react-navigation/native';
+import { headerComposer, Header } from 'navigation/NavigationMixins';
 import {
   Container,
   DivCard,
@@ -10,11 +10,11 @@ import {
   PaddingBar,
   DivVersion,
 } from './styles';
-import {TouchableOpacity, BackHandler, View} from 'react-native';
-import {AppState} from 'store/RootReducer';
-import {setCampaign} from 'features/accredit/redux/reducer/accreditReducer';
+import { TouchableOpacity, BackHandler, View } from 'react-native';
+import { AppState } from 'store/RootReducer';
+import { setCampaign } from 'features/accredit/redux/reducer/accreditReducer';
 import * as Progress from 'react-native-progress';
-import {useSelector, useDispatch} from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 const ConfigurationScreen = () => {
   const navigation = useNavigation();
@@ -75,16 +75,16 @@ const ConfigurationScreen = () => {
   };
 
   const getImage = useCallback(() => {
-    if (campaign < 0.2) {
+    if (campaign < 0.25) {
       return 'Bebe';
     }
-    if (campaign >= 0.2 && campaign < 0.4) {
+    if (campaign >= 0.25 && campaign < 0.5) {
       return 'Criança';
     }
-    if (campaign >= 0.4 && campaign < 0.6) {
+    if (campaign >= 0.5 && campaign < 0.75) {
       return 'Adolescente';
     }
-    if (campaign >= 0.6 && campaign < 0.8) {
+    if (campaign >= 0.75 && campaign < 1) {
       return 'Adulto';
     }
     if (campaign === 1) {
@@ -145,7 +145,7 @@ const ConfigurationScreen = () => {
             <Image type="Exit" width={40} height={40} />
           </TouchableOpacity>
           <DivVersion>
-            <Markdown title="v 1.3" fontSize={10} />
+            <Markdown title="v 1.5" fontSize={10} />
           </DivVersion>
         </Card>
       </DivCard>

@@ -1,5 +1,5 @@
-import React, {memo, useCallback, useEffect, useState} from 'react';
-import {useNavigation, useRoute} from '@react-navigation/native';
+import React, { memo, useCallback, useEffect, useState } from 'react';
+import { useNavigation, useRoute } from '@react-navigation/native';
 
 import {
   setProgress,
@@ -14,9 +14,9 @@ import {
   resetResponse,
   nextStage,
 } from 'features/player/redux/reducer/playerReducer';
-import {useDispatch, useSelector} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-import {headerComposer, Header} from 'navigation/NavigationMixins';
+import { headerComposer, Header } from 'navigation/NavigationMixins';
 import {
   PictureContent,
   AlternativeContent,
@@ -26,9 +26,9 @@ import {
 } from './styles';
 import ResultAnswered from './resultAnswered';
 import SatisfactionSurvey from './satisfactionSurvey';
-import {Markdown, Image, Button} from 'components';
-import {AppState} from 'store/RootReducer';
-import {BackHandler} from 'react-native';
+import { Markdown, Image, Button } from 'components';
+import { AppState } from 'store/RootReducer';
+import { BackHandler } from 'react-native';
 
 const PlayerScreen = () => {
   const [visibleModal, setVisibleModal] = useState(false);
@@ -39,9 +39,9 @@ const PlayerScreen = () => {
   const [typeModalProgress, setTypeModalProgress] = useState('');
   const [surveyModalVisible, setSurveyModalVisible] = useState(false);
   const {
-    params: {id},
+    params: { id },
   } = useRoute();
-  const {setOptions, navigate, goBack} = useNavigation();
+  const { setOptions, navigate, goBack } = useNavigation();
   const dispatch = useDispatch();
 
   setOptions(
@@ -72,8 +72,8 @@ const PlayerScreen = () => {
   const stages = useSelector((appState: AppState) =>
     appState.PlayerFeature.menu.menus[id].stage[stageStorageProfile?.stageId]
       ? appState.PlayerFeature.menu.menus[id].stage[
-          stageStorageProfile?.stageId
-        ]
+      stageStorageProfile?.stageId
+      ]
       : null,
   );
 
@@ -124,13 +124,16 @@ const PlayerScreen = () => {
     (appState: AppState) => appState.AccreditFeature.state.surveyAnswered,
   );
 
+  const email = useSelector(
+    (appState: AppState) => appState.AccreditFeature.state.email,
+  );
+
   const statusLoading = useSelector(
     (appState: AppState) => appState.AccreditFeature.state.loading,
   );
 
   useEffect(() => {
     if (statusLoading) {
-      console.log('To dentro');
       setLoading(false);
       setSurveyModalVisible(false);
       dispatch(resetLoading());
@@ -138,10 +141,10 @@ const PlayerScreen = () => {
   }, [statusLoading, dispatch]);
 
   useEffect(() => {
-    if (fullGame && !surveyStatus) {
+    if (fullGame && !surveyStatus && email) {
       setSurveyModalVisible(true);
     }
-  }, [fullGame, surveyStatus]);
+  }, [fullGame, surveyStatus, email]);
 
   useEffect(() => {
     dispatch(
@@ -207,7 +210,7 @@ const PlayerScreen = () => {
           setVisibleModal(true);
           setTypeModal('nextLevel');
           setTypeModalProgress('child');
-          dispatch(resetStatus({statusFinished: 'status1'}));
+          dispatch(resetStatus({ statusFinished: 'status1' }));
         }
         break;
       case 2:
@@ -215,7 +218,7 @@ const PlayerScreen = () => {
           setVisibleModal(true);
           setTypeModal('nextLevel');
           setTypeModalProgress('teenager');
-          dispatch(resetStatus({statusFinished: 'status2'}));
+          dispatch(resetStatus({ statusFinished: 'status2' }));
         }
         break;
       case 3:
@@ -223,7 +226,7 @@ const PlayerScreen = () => {
           setVisibleModal(true);
           setTypeModal('nextLevel');
           setTypeModalProgress('young');
-          dispatch(resetStatus({statusFinished: 'status3'}));
+          dispatch(resetStatus({ statusFinished: 'status3' }));
         }
         break;
       case 4:
@@ -231,7 +234,7 @@ const PlayerScreen = () => {
           setVisibleModal(true);
           setTypeModal('nextLevel');
           setTypeModalProgress('adult');
-          dispatch(resetStatus({statusFinished: 'status4'}));
+          dispatch(resetStatus({ statusFinished: 'status4' }));
         }
         break;
       case 5:
@@ -239,7 +242,7 @@ const PlayerScreen = () => {
           setVisibleModal(true);
           setTypeModal('nextLevel');
           setTypeModalProgress('old');
-          dispatch(resetStatus({statusFinished: 'status5'}));
+          dispatch(resetStatus({ statusFinished: 'status5' }));
         }
         break;
       default:
@@ -298,7 +301,7 @@ const PlayerScreen = () => {
         loading={loading}
         isVisible={surveyModalVisible}
         onPressed={(item: string) => {
-          dispatch(surveyAnswered({surverAnswered: item}));
+          dispatch(surveyAnswered({ surverAnswered: item }));
           setLoading(true);
           // console.log(item);
         }}

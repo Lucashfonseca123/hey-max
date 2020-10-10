@@ -8,6 +8,7 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "s": "adb reverse tcp:9090 tcp:9090 && adb reverse tcp:8081 tcp:8081 && react-native start",
     "reverse": "adb reverse tcp:8081 tcp:8081",
     "reverseR": "adb reverse tcp:9090 tcp:9090"
   },

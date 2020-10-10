@@ -1,14 +1,14 @@
-import React, {useEffect, useCallback, useState} from 'react';
-import {TouchableOpacity} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
-import {GoogleSignin} from '@react-native-community/google-signin';
-import {getStages} from 'features/player/redux/reducer/menuReducer';
+import React, { useEffect, useCallback, useState } from 'react';
+import { TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { GoogleSignin } from '@react-native-community/google-signin';
+import { getStages } from 'features/player/redux/reducer/menuReducer';
 import {
   login as loginReducer,
   resetLoading,
 } from 'features/accredit/redux/reducer/accreditReducer';
 
-import {Markdown, Button, Image} from 'components';
+import { Markdown, Button, Image } from 'components';
 import ResultAnswered from 'features/player/screens/playerScreen/resultAnswered';
 import {
   Container,
@@ -17,8 +17,9 @@ import {
   ContainerBottom,
   ContainerEmail,
 } from './styles';
-import {useDispatch, useSelector} from 'react-redux';
-import {AppState} from 'store/RootReducer';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppState } from 'store/RootReducer';
+import reactotron from 'reactotron-react-native';
 
 const WelcomeScreen = () => {
   const [isVisible, setVisible] = useState(false);
@@ -77,7 +78,7 @@ const WelcomeScreen = () => {
 
         <ContainerEmail>
           <Markdown title="Faça seu login pelo e-mail" fontSize={16} />
-          <TouchableOpacity style={{marginTop: 16}} onPress={login}>
+          <TouchableOpacity style={{ marginTop: 16 }} onPress={login}>
             <Image type="Gmail" height={40} width={60} />
           </TouchableOpacity>
         </ContainerEmail>
@@ -88,7 +89,9 @@ const WelcomeScreen = () => {
               if (isName) {
                 if (
                   userLogInitial[0] === false ||
-                  userLogInitial[1] === false
+                  userLogInitial[1] === false ||
+                  userLogInitial[2] === false ||
+                  userLogInitial[3] === false
                 ) {
                   navigation.navigate('MenuScreen');
                 } else {

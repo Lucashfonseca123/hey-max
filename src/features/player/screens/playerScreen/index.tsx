@@ -130,7 +130,6 @@ const PlayerScreen = () => {
 
   useEffect(() => {
     if (statusLoading) {
-      console.log('To dentro');
       setLoading(false);
       setSurveyModalVisible(false);
       dispatch(resetLoading());

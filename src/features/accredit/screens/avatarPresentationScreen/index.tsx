@@ -1,13 +1,13 @@
-import React, {useRef, useEffect} from 'react';
-import {Animated} from 'react-native';
-import {Image, Button, PopUp} from '../../../../components';
+import React, { useRef, useEffect } from 'react';
+import { Animated } from 'react-native';
+import { Image, Button, PopUp } from '../../../../components';
 import {
   Container,
   ContainerTop,
   ContainerMiddle,
   ContainerBottom,
 } from './styles';
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
 const AvatarPresentationScreen = () => {
   const navigation = useNavigation();
@@ -39,7 +39,8 @@ const AvatarPresentationScreen = () => {
             {
               opacity: fadeAnim,
             },
-          ]}>
+          ]}
+        >
           <Image type="Bebe" width={140} height={160} />
         </Animated.View>
       </ContainerMiddle>

@@ -8,21 +8,21 @@ const Container = styled.View`
   padding-left: 16px;
   padding-right: 16px;
   padding-bottom: 100px;
-  background-color: #FFEF60;
+  background-color: #ffef60;
 `;
 
 const ContainerTop = styled.View`
-  flex: 1;
-  margin-top: 105px;
-  align-items: center;
-  margin-right: 272px;
+  left: -36px;
+  top: 140px;
+  position: absolute;
   transform: rotate(57deg);
 `;
 
 const ContainerMiddle = styled.View`
-    flex: 1;
-    margin-top: 10px;
-    align-items: center;
+  flex: 1;
+  margin-top: 320px;
+  align-items: center;
+  justify-content: center;
 `;
 
 const ContainerBottom = styled.View`
@@ -30,6 +30,5 @@ const ContainerBottom = styled.View`
   justify-content: flex-end;
   align-items: center;
 `;
-
 
 export { Container, ContainerTop, ContainerMiddle, ContainerBottom };
